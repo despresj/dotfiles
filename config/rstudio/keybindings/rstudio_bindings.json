@@ -1,0 +1,9 @@
+{
+    "notebookClearAllOutput": "Shift+Cmd+J",
+    "insertChunkPython": "Alt+Cmd+P",
+    "switchToChunkPython": "",
+    "previousTab": "Ctrl+`",
+    "focusNextPane": "Alt+Tab",
+    "focusPreviousPane": "F3",
+    "activateConsole": "Ctrl+2"
+}

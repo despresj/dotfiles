@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "import os\nos.chdir(\"\/Users\/josephdespres\/Documents\/Python\/automate_the_boringstuff\/email_with_py\")\nfrom sendingemail import *\n\nsendToYahoo(\"yeah!\")",
+    "uid" : "CBA86DE5-065E-4365-96CD-4DE77E0F31EE",
+    "name" : "send email",
+    "keyword" : "pye"
+  }
+}

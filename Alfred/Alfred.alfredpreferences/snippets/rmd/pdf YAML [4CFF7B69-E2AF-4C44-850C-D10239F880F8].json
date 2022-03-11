@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "---\ntitle: \"`r here::here()`\"\nauthor: \"Joe Despres\"\ndate: \"`r format(Sys.time(), '%d %B, %Y')`\"\nurlcolor: blue\noutput: pdf_document\n---\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n",
+    "uid" : "4CFF7B69-E2AF-4C44-850C-D10239F880F8",
+    "name" : "pdf YAML",
+    "keyword" : "pdf"
+  }
+}

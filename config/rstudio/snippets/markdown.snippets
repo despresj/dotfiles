@@ -1,0 +1,43 @@
+# my snippets
+
+snippet rcode
+	`{r, ${1:}}`
+	
+snippet newchunkname
+	```{r, ${1:}}
+	${code}
+	```
+snippet myrmd_setup
+	```{r setup, include=FALSE}
+	library(tidyverse)
+	library(kableExtra)
+	theme_set(theme_light())
+	options(scipen = 1000000)
+	height <- 7; width <- 15; base <- 15
+	knitr::opts_chunk$
+	set(echo  = FALSE, message = FALSE, warning = FALSE, cache = FALSE, tidy = FALSE, fig.align = 'center', fig.width = width, fig.height = height)
+	```
+	
+	
+# default
+
+snippet [
+	[${1:label}](${2:location})
+
+snippet ![
+	![${1:label}](${2:location})
+
+snippet r
+	```{r ${1:label}, ${2:options}}
+	${0}
+	```
+
+snippet rcpp
+	```{r, engine='Rcpp'}
+	#include <Rcpp.h>
+	using namespace Rcpp;
+	
+	${0}
+	
+	```
+

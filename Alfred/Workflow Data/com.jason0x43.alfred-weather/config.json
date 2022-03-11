@@ -1,0 +1,16 @@
+{
+	"Service": "OpenWeather",
+	"DarkSkyKey": "",
+	"OpenWeatherKey": "75a2b55e604cdb63965e5e8db7963797",
+	"ClimaCellKey": "",
+	"Icons": "grzanka",
+	"DateFormat": "2006-1-2",
+	"TimeFormat": "15:04",
+	"Location": {
+		"Latitude": 42.73416806109788,
+		"Longitude": -84.63100686152097,
+		"ShortName": "Delta Charter Township, Eaton County, Michigan, 48917, United States of America",
+		"Name": "Delta Charter Township, Eaton County, Michigan, 48917, United States of America"
+	},
+	"Units": "Metric"
+}

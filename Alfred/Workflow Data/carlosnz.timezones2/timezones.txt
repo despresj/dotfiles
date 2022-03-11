@@ -1,0 +1,6 @@
+#Version2.0
+Chicago|United States|America/Chicago|US|1|1
+London|United Kingdom|Europe/London|GB|44|1
+Los Angeles|United States|America/Los_Angeles|US|1|1
+New York|United States|America/New_York|US|1|1
+Tallinn|Estonia|Europe/Tallinn|EE|372|1Tallinn|Estonia|Europe/Tallinn|EE|372|1

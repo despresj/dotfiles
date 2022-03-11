@@ -8,7 +8,8 @@
      ~/.zshrc: zshrc 
      ~/.gitconfig: gitconfig
      ~/.vimrc: vimrc
-     ~/.config/karabiner/karabiner.json: karabiner 
+     ~/.config: config/
+     ~/Library/Application Support/Alfred: alfred/
 - create:
     - ~/downloads
 

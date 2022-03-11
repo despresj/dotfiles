@@ -1,0 +1,63 @@
+{
+    "panes": {
+        "quadrants": [
+            "Source",
+            "TabSet1",
+            "Console",
+            "TabSet2"
+        ],
+        "tabSet1": [
+            "Environment",
+            "Connections",
+            "Build",
+            "VCS",
+            "Tutorial",
+            "Presentation"
+        ],
+        "tabSet2": [
+            "History",
+            "Files",
+            "Plots",
+            "Packages",
+            "Help",
+            "Viewer"
+        ],
+        "hiddenTabSet": [],
+        "console_left_on_top": false,
+        "console_right_on_top": true,
+        "additional_source_columns": 0
+    },
+    "save_files_before_build": true,
+    "font_size_points": 13,
+    "editor_theme": "joestheme",
+    "default_project_location": "~/Documents/MSU/CSE-847-Machine-Learning/project_cse",
+    "source_with_echo": true,
+    "document_author": "Joe Despres",
+    "rmd_preferred_template_path": "/Library/Frameworks/R.framework/Versions/4.0/Resources/library/rmdformats/rmarkdown/templates/readthedown",
+    "wrap_tab_navigation": false,
+    "save_workspace": "never",
+    "reuse_sessions_for_project_links": true,
+    "terminal_path": "/Users/josephdespres",
+    "help_font_size_points": 14,
+    "remove_history_duplicates": true,
+    "show_indent_guides": true,
+    "code_completion_characters": 1,
+    "posix_terminal_shell": "zsh",
+    "always_save_history": false,
+    "load_workspace": false,
+    "jobs_tab_visibility": "shown",
+    "restore_source_documents": false,
+    "initial_working_directory": "~/Documents/Side_R_Projects",
+    "restore_last_project": false,
+    "scroll_past_end_of_document": true,
+    "syntax_color_console": true,
+    "console_line_length_limit": 999,
+    "enable_text_drag": false,
+    "rainbow_parentheses": true,
+    "show_panel_focus_rectangle": true,
+    "code_completion_delay": 100,
+    "knit_working_dir": "project",
+    "rmd_viewer_type": "pane",
+    "auto_detect_indentation": true,
+    "editor_keybindings": "vim"
+}

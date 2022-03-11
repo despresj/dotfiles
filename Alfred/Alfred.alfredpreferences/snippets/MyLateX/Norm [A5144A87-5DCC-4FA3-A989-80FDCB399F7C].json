@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "$\\thicksim \\mathcal{N}(\\mu,\\,\\sigma^{2})$",
+    "uid" : "A5144A87-5DCC-4FA3-A989-80FDCB399F7C",
+    "name" : "Norm",
+    "keyword" : "norm"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 8,
+      "subtext" : {
+        "size" : 14,
+        "colorSelected" : "#00FF00FF",
+        "font" : "System Light",
+        "color" : "#56585BE5"
+      },
+      "shortcut" : {
+        "size" : 18,
+        "colorSelected" : "#00C900FF",
+        "font" : "System Light",
+        "color" : "#F3F6FFFF"
+      },
+      "backgroundSelected" : "#00000054",
+      "text" : {
+        "size" : 24,
+        "colorSelected" : "#00FF00FF",
+        "font" : "System",
+        "color" : "#F9F9FFFF"
+      },
+      "iconPaddingHorizontal" : 13,
+      "roundness" : 0,
+      "paddingVertical" : 8,
+      "iconSize" : 46
+    },
+    "search" : {
+      "backgroundSelected" : "#181C1BFF",
+      "paddingHorizontal" : 8,
+      "spacing" : 10,
+      "text" : {
+        "size" : 57,
+        "colorSelected" : "#FF00F3FF",
+        "font" : "System Light",
+        "color" : "#00FF00FF"
+      },
+      "background" : "#000000FF",
+      "roundness" : 0,
+      "paddingVertical" : 6
+    },
+    "window" : {
+      "color" : "#000000FF",
+      "paddingHorizontal" : 0,
+      "width" : 635,
+      "borderPadding" : 0,
+      "borderColor" : "#FBFCFF00",
+      "blur" : 0,
+      "roundness" : -64,
+      "paddingVertical" : 0
+    },
+    "credit" : "Sindre Sorhus",
+    "separator" : {
+      "color" : "#00000005",
+      "thickness" : 1
+    },
+    "scrollbar" : {
+      "color" : "#53535761",
+      "thickness" : 2
+    },
+    "name" : "Simple Dark"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "chmod -R +x {clipboard}",
+    "uid" : "A38E9434-AD79-4434-A42D-739A3644C522",
+    "name" : "execute permission",
+    "keyword" : "+x"
+  }
+}
