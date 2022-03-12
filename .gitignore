@@ -1,1 +1,5 @@
 .DS_Store
+*.alfdb
+Alfred/prefs.json
+Alfred/usage.data
+config/nvim/plugged/AutoComplPop/
