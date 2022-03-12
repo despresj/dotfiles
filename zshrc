@@ -8,7 +8,7 @@ PROMPT='
 RPROMPT='%*'
 
 # Path to your oh-my-zsh installation.
-export ZSH="~/.oh-my-zsh"
+export ZSH="/Users/josephdespres/.oh-my-zsh"
 
 # adding syntax highlighting for man pages
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -77,8 +77,8 @@ source $ZSH/oh-my-zsh.sh
 new () {
     sudo touch $1 && open $1
 }
-# User configuration
 
+#User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
