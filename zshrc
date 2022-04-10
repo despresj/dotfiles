@@ -2,28 +2,24 @@
 function mkcd() {
 	mkdir -p "$@" && cd "$_";
 }
+function to(){ 
+	touch $1; open $1;
+}
+function gh() {
+    git remote -v | awk '/origin.*push/ {print $2}' | xargs open
+}
 # Custom prompts 
 PROMPT='
 %1~ %L %# '
 RPROMPT='%*'
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-echo "hello from  .zshrc"
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/josephdespres/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# adding syntax highlighting for man pages
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -87,8 +83,8 @@ source $ZSH/oh-my-zsh.sh
 new () {
     sudo touch $1 && open $1
 }
-# User configuration
 
+#User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -115,7 +111,7 @@ new () {
 alias lg='lazygit'
 alias vim='nvim'
 alias vi='nvim'
-alias ls='ls -lAFh'
+alias ls='ls -lAFh --color=tty'
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/josephdespres/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
