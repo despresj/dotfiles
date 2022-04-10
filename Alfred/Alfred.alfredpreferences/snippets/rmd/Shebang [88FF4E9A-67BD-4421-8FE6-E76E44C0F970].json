@@ -1,8 +1,0 @@
-{
-  "alfredsnippet" : {
-    "snippet" : "#!\/usr\/bin\/env Rscript",
-    "uid" : "88FF4E9A-67BD-4421-8FE6-E76E44C0F970",
-    "name" : "Shebang",
-    "keyword" : "!r"
-  }
-}

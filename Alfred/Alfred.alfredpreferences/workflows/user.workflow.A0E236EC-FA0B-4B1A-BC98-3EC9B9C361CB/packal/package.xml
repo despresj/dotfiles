@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>VSCode Project Manager</name>
-  <version>0.0.1</version>
-  <bundle>com.trinvh.vscode-project-manager</bundle>
-  <updated>1610030506</updated>
-  <file>vscode_project_manager.alfredworkflow</file>
-</workflow>

@@ -1,8 +1,0 @@
-{
-  "alfredsnippet" : {
-    "snippet" : "```\n\n```{r}",
-    "uid" : "33323CC2-F9B9-480C-B27C-C33BA2211BD9",
-    "name" : "split chunk in two",
-    "keyword" : "`"
-  }
-}
