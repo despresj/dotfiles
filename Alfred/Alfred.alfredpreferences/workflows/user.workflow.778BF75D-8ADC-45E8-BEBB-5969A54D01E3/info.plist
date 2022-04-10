@@ -40,7 +40,7 @@
 	<key>description</key>
 	<string>Opens iTerm Window/Tab to Specified Folder</string>
 	<key>disabled</key>
-	<true/>
+	<false/>
 	<key>name</key>
 	<string>Open folder in iTerm</string>
 	<key>objects</key>
@@ -61,21 +61,6 @@
 			<string>E3D54CC9-2C8D-4F82-88B1-57F3D21E1BAD</string>
 			<key>version</key>
 			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>openwith</key>
-				<string>/Applications/iTerm.app</string>
-				<key>sourcefile</key>
-				<string></string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openfile</string>
-			<key>uid</key>
-			<string>218DEA89-3AE7-4293-85D8-714FE28947E9</string>
-			<key>version</key>
-			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -144,6 +129,21 @@
 			<string>769577F3-91AF-49E8-921F-C2E84344E2A2</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>openwith</key>
+				<string>/Applications/iTerm.app</string>
+				<key>sourcefile</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>218DEA89-3AE7-4293-85D8-714FE28947E9</string>
+			<key>version</key>
+			<integer>3</integer>
 		</dict>
 	</array>
 	<key>readme</key>

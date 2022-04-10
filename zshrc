@@ -2,6 +2,12 @@
 function mkcd() {
 	mkdir -p "$@" && cd "$_";
 }
+function to(){ 
+	touch $1; open $1;
+}
+function gh() {
+    git remote -v | awk '/origin.*push/ {print $2}' | xargs open
+}
 # Custom prompts 
 PROMPT='
 %1~ %L %# '
@@ -105,7 +111,7 @@ new () {
 alias lg='lazygit'
 alias vim='nvim'
 alias vi='nvim'
-alias ls='ls -lAFh'
+alias ls='ls -lAFh --color=tty'
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/josephdespres/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

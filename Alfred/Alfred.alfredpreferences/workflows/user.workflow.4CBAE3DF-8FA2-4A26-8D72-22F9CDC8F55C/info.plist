@@ -58,19 +58,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>17857A1B-88F5-4DFB-A32C-7B11215AF999</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>BE149BB0-CC2C-469E-97F7-C90D6B477E25</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>250F75C8-B62B-44E1-9392-BC865E1FC128</key>
 		<array>
 			<dict>
@@ -151,37 +138,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>BE149BB0-CC2C-469E-97F7-C90D6B477E25</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>980E3F46-2BA3-4475-8F8A-C1EF185D035B</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>C5E5CF56-63E5-43C6-A517-16669ADC7723</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>9484CBFB-A8BC-4BC5-9F19-0279FDD7ABFC</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>CA54B730-0490-441F-AD5C-530F078F67FF</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>F570A361-AA50-4FB8-9D15-6E4FFAC47905</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -216,19 +177,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>F570A361-AA50-4FB8-9D15-6E4FFAC47905</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>AAEF5DFA-16B2-4E6E-B3C5-FAE04A54C5E2</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 	</dict>
 	<key>createdby</key>
 	<string></string>
@@ -240,71 +188,6 @@
 	<string>Sytem</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>adduuid</key>
-				<false/>
-				<key>allowemptyfiles</key>
-				<true/>
-				<key>createintermediatefolders</key>
-				<false/>
-				<key>filename</key>
-				<string>/Users/josephdespres/Documents/MSU/ECE-884-Deep-Learning/project/ece_ref.bib</string>
-				<key>filetext</key>
-				<string>
-{clipboard}
-</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>relativepathmode</key>
-				<integer>0</integer>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.writefile</string>
-			<key>uid</key>
-			<string>BE149BB0-CC2C-469E-97F7-C90D6B477E25</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>soundname</key>
-				<string>Hero</string>
-				<key>systemsound</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.playsound</string>
-			<key>uid</key>
-			<string>980E3F46-2BA3-4475-8F8A-C1EF185D035B</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>cited</string>
-				<key>subtext</key>
-				<string>Deep Learning Project</string>
-				<key>text</key>
-				<string>Append Copied Citation to ece_ref.bib</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>17857A1B-88F5-4DFB-A32C-7B11215AF999</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -371,71 +254,6 @@
 			<string>alfred.workflow.output.playsound</string>
 			<key>uid</key>
 			<string>E664C6B3-8105-4877-89A4-9E011B4D3290</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>soundname</key>
-				<string>Hero</string>
-				<key>systemsound</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.playsound</string>
-			<key>uid</key>
-			<string>AAEF5DFA-16B2-4E6E-B3C5-FAE04A54C5E2</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>adduuid</key>
-				<false/>
-				<key>allowemptyfiles</key>
-				<true/>
-				<key>createintermediatefolders</key>
-				<false/>
-				<key>filename</key>
-				<string>/Users/josephdespres/Documents/MSU/CSE-847-Machine-Learning/project_cse/cse_ref.bib</string>
-				<key>filetext</key>
-				<string>
-{clipboard}
-</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>relativepathmode</key>
-				<integer>0</integer>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.writefile</string>
-			<key>uid</key>
-			<string>F570A361-AA50-4FB8-9D15-6E4FFAC47905</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>citec</string>
-				<key>subtext</key>
-				<string>Machine Learning Project</string>
-				<key>text</key>
-				<string>Append Copied Citation to cse_ref.bib</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>CA54B730-0490-441F-AD5C-530F078F67FF</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -842,13 +660,6 @@ afplay /Users/josephdespres/Downloads/med.m4a</string>
 			<key>ypos</key>
 			<integer>405</integer>
 		</dict>
-		<key>17857A1B-88F5-4DFB-A32C-7B11215AF999</key>
-		<dict>
-			<key>xpos</key>
-			<integer>480</integer>
-			<key>ypos</key>
-			<integer>15</integer>
-		</dict>
 		<key>250F75C8-B62B-44E1-9392-BC865E1FC128</key>
 		<dict>
 			<key>xpos</key>
@@ -912,20 +723,6 @@ afplay /Users/josephdespres/Downloads/med.m4a</string>
 			<key>ypos</key>
 			<integer>525</integer>
 		</dict>
-		<key>980E3F46-2BA3-4475-8F8A-C1EF185D035B</key>
-		<dict>
-			<key>xpos</key>
-			<integer>755</integer>
-			<key>ypos</key>
-			<integer>15</integer>
-		</dict>
-		<key>AAEF5DFA-16B2-4E6E-B3C5-FAE04A54C5E2</key>
-		<dict>
-			<key>xpos</key>
-			<integer>755</integer>
-			<key>ypos</key>
-			<integer>145</integer>
-		</dict>
 		<key>AB88AA2E-5802-4B77-8B68-AF5F1F9A6FF0</key>
 		<dict>
 			<key>xpos</key>
@@ -940,13 +737,6 @@ afplay /Users/josephdespres/Downloads/med.m4a</string>
 			<key>ypos</key>
 			<integer>560</integer>
 		</dict>
-		<key>BE149BB0-CC2C-469E-97F7-C90D6B477E25</key>
-		<dict>
-			<key>xpos</key>
-			<integer>615</integer>
-			<key>ypos</key>
-			<integer>15</integer>
-		</dict>
 		<key>BE9E6FB3-FA31-4CF8-87E9-42361F18BB8B</key>
 		<dict>
 			<key>xpos</key>
@@ -960,13 +750,6 @@ afplay /Users/josephdespres/Downloads/med.m4a</string>
 			<integer>10</integer>
 			<key>ypos</key>
 			<integer>510</integer>
-		</dict>
-		<key>CA54B730-0490-441F-AD5C-530F078F67FF</key>
-		<dict>
-			<key>xpos</key>
-			<integer>480</integer>
-			<key>ypos</key>
-			<integer>145</integer>
 		</dict>
 		<key>E664C6B3-8105-4877-89A4-9E011B4D3290</key>
 		<dict>
@@ -988,13 +771,6 @@ afplay /Users/josephdespres/Downloads/med.m4a</string>
 			<integer>10</integer>
 			<key>ypos</key>
 			<integer>620</integer>
-		</dict>
-		<key>F570A361-AA50-4FB8-9D15-6E4FFAC47905</key>
-		<dict>
-			<key>xpos</key>
-			<integer>615</integer>
-			<key>ypos</key>
-			<integer>145</integer>
 		</dict>
 		<key>FC38A901-E6BC-4816-8272-E00422546B63</key>
 		<dict>

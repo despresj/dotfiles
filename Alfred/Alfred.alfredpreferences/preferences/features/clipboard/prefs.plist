@@ -6,6 +6,8 @@
 	<string>Hero</string>
 	<key>fastAppendBackToClipboard</key>
 	<true/>
+	<key>fastAppendSeparator</key>
+	<integer>2</integer>
 	<key>hotkey</key>
 	<dict>
 		<key>key</key>

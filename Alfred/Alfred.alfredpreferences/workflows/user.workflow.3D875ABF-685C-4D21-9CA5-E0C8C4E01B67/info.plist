@@ -45,6 +45,32 @@
 				<false/>
 			</dict>
 		</array>
+		<key>313C6AF8-57AB-4F2D-9725-7D361DE221EC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CD58E316-6726-4D92-A761-BF1DFECD43D6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>586DC4E7-05E2-4539-8B97-59B981695A8D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E0475870-4C82-4AB6-9E07-446AC5268C6B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>6C6F22BF-1DFA-4392-9592-FD0F8D4D81EF</key>
 		<array>
 			<dict>
@@ -97,6 +123,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>7A9F9AC3-D7C2-4DA9-8425-1159639EC274</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>313C6AF8-57AB-4F2D-9725-7D361DE221EC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>857F9F5C-FADC-48FB-ABE1-9ABFBAAABB15</key>
 		<array>
 			<dict>
@@ -128,6 +167,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>D966A5F6-EC70-45CA-BB01-A30669FE8CEC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>9875855A-3AB0-4DE1-9963-B29957175A16</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>586DC4E7-05E2-4539-8B97-59B981695A8D</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -709,6 +761,136 @@ Deep Learning</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>soundname</key>
+				<string>Hero</string>
+				<key>systemsound</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.playsound</string>
+			<key>uid</key>
+			<string>E0475870-4C82-4AB6-9E07-446AC5268C6B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>cited</string>
+				<key>subtext</key>
+				<string>Deep Learning Project</string>
+				<key>text</key>
+				<string>Append Copied Citation to ECE Project</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>9875855A-3AB0-4DE1-9963-B29957175A16</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>adduuid</key>
+				<false/>
+				<key>allowemptyfiles</key>
+				<true/>
+				<key>createintermediatefolders</key>
+				<false/>
+				<key>filename</key>
+				<string>/Users/josephdespres/Documents/MSU/ECE-884-Deep-Learning/ece_colab/MSU-LaTeX-Templates/MSU Poster Template/references.bib</string>
+				<key>filetext</key>
+				<string>
+{clipboard}
+</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>relativepathmode</key>
+				<integer>0</integer>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.writefile</string>
+			<key>uid</key>
+			<string>586DC4E7-05E2-4539-8B97-59B981695A8D</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>soundname</key>
+				<string>Hero</string>
+				<key>systemsound</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.playsound</string>
+			<key>uid</key>
+			<string>CD58E316-6726-4D92-A761-BF1DFECD43D6</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>citec</string>
+				<key>subtext</key>
+				<string>Machine Learning Project</string>
+				<key>text</key>
+				<string>Append Copied Citation to CSE Project</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>7A9F9AC3-D7C2-4DA9-8425-1159639EC274</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>adduuid</key>
+				<false/>
+				<key>allowemptyfiles</key>
+				<true/>
+				<key>createintermediatefolders</key>
+				<false/>
+				<key>filename</key>
+				<string>/Users/josephdespres/Documents/MSU/CSE-847-Machine-Learning/project_cse/probabilistic_programming/docs/latex_files/References.bib</string>
+				<key>filetext</key>
+				<string>
+{clipboard}
+</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>relativepathmode</key>
+				<integer>0</integer>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.writefile</string>
+			<key>uid</key>
+			<string>313C6AF8-57AB-4F2D-9725-7D361DE221EC</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -742,12 +924,26 @@ Deep Learning</string>
 			<key>ypos</key>
 			<integer>490</integer>
 		</dict>
+		<key>313C6AF8-57AB-4F2D-9725-7D361DE221EC</key>
+		<dict>
+			<key>xpos</key>
+			<integer>145</integer>
+			<key>ypos</key>
+			<integer>870</integer>
+		</dict>
 		<key>49AF5B55-53B0-4D47-B915-6842EE112DEB</key>
 		<dict>
 			<key>xpos</key>
 			<integer>680</integer>
 			<key>ypos</key>
 			<integer>265</integer>
+		</dict>
+		<key>586DC4E7-05E2-4539-8B97-59B981695A8D</key>
+		<dict>
+			<key>xpos</key>
+			<integer>145</integer>
+			<key>ypos</key>
+			<integer>740</integer>
 		</dict>
 		<key>598530A2-479C-47E4-BF52-3A786ED59EB0</key>
 		<dict>
@@ -791,6 +987,13 @@ Deep Learning</string>
 			<key>ypos</key>
 			<integer>30</integer>
 		</dict>
+		<key>7A9F9AC3-D7C2-4DA9-8425-1159639EC274</key>
+		<dict>
+			<key>xpos</key>
+			<integer>10</integer>
+			<key>ypos</key>
+			<integer>870</integer>
+		</dict>
 		<key>857F9F5C-FADC-48FB-ABE1-9ABFBAAABB15</key>
 		<dict>
 			<key>xpos</key>
@@ -811,6 +1014,13 @@ Deep Learning</string>
 			<integer>455</integer>
 			<key>ypos</key>
 			<integer>265</integer>
+		</dict>
+		<key>9875855A-3AB0-4DE1-9963-B29957175A16</key>
+		<dict>
+			<key>xpos</key>
+			<integer>10</integer>
+			<key>ypos</key>
+			<integer>740</integer>
 		</dict>
 		<key>9C1794EE-5070-48A1-8582-00B037F14186</key>
 		<dict>
@@ -840,6 +1050,13 @@ Deep Learning</string>
 			<key>ypos</key>
 			<integer>495</integer>
 		</dict>
+		<key>CD58E316-6726-4D92-A761-BF1DFECD43D6</key>
+		<dict>
+			<key>xpos</key>
+			<integer>285</integer>
+			<key>ypos</key>
+			<integer>870</integer>
+		</dict>
 		<key>CFFE4ACB-6E00-460A-9369-5020B043A96D</key>
 		<dict>
 			<key>xpos</key>
@@ -860,6 +1077,13 @@ Deep Learning</string>
 			<integer>610</integer>
 			<key>ypos</key>
 			<integer>295</integer>
+		</dict>
+		<key>E0475870-4C82-4AB6-9E07-446AC5268C6B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>285</integer>
+			<key>ypos</key>
+			<integer>740</integer>
 		</dict>
 		<key>ED9EE698-8C65-48D3-BD8A-BAC1CB4C50E9</key>
 		<dict>
