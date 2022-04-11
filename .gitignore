@@ -1,4 +1,11 @@
 .DS_Store
+<<<<<<< HEAD
 config/nvim/plugged/AutoComplPop/
 Alfred/
 Alfred/
+=======
+*.alfdb
+Alfred/prefs.json
+Alfred/usage.data
+config/nvim/plugged/AutoComplPop/
+>>>>>>> homebrew

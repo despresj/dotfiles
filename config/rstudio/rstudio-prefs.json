@@ -59,5 +59,7 @@
     "knit_working_dir": "project",
     "rmd_viewer_type": "pane",
     "auto_detect_indentation": true,
-    "editor_keybindings": "vim"
+    "editor_keybindings": "vim",
+    "auto_save_on_blur": true,
+    "reduced_motion": true
 }

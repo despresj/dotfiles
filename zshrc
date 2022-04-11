@@ -75,8 +75,11 @@ export UPDATE_ZSH_DAYS=13
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-plugins=(zsh-autosuggestions)
+plugins=(
+	git
+ 	zsh-autosuggestions
+	zsh-vi-mode
+)
 
 source $ZSH/oh-my-zsh.sh
 
