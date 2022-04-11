@@ -80,9 +80,8 @@ plugins=(
  	zsh-autosuggestions
 	zsh-vi-mode
 )
-
+bindkey '^I' autosuggest-accept
 source $ZSH/oh-my-zsh.sh
-
 new () {
     sudo touch $1 && open $1
 }
