@@ -1,8 +1,0 @@
-{
-  "alfredsnippet" : {
-    "snippet" : "summary(fit)$coeff[,4] #pvals",
-    "uid" : "39BFC898-C9D0-4645-B0F2-C113B0C04188",
-    "name" : "get p values",
-    "keyword" : "pval"
-  }
-}

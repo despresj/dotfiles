@@ -1,8 +1,0 @@
-{
-  "alfredsnippet" : {
-    "snippet" : "python3 -m pip install {clipboard}",
-    "uid" : "4243D6D8-D9CE-4441-9AE2-A44010069946",
-    "name" : "pip",
-    "keyword" : "pip"
-  }
-}

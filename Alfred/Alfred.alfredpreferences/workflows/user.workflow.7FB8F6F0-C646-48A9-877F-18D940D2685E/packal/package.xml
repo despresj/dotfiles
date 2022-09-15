@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Last 2 Imgur</name>
-  <version>2.0.0</version>
-  <bundle>in.aviaryan.last2imgur</bundle>
-  <updated>1504182556</updated>
-  <file>last_2_imgur.alfredworkflow</file>
-</workflow>
