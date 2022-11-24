@@ -3,3 +3,8 @@ Alfred/Alfred.alfredpreferences
 *.alfdb
 Alfred/*
 config/nvim/plugged/AutoComplPop/
+vscode/extensions/ms-python.python-2022.4.1/pythonFiles/
+vscode/
+Alfred/powerpack*
+Alfred/Alfred.alfredpreferences/snippets/
+Alfred/Alfred.alfredpreferences/snippets/
