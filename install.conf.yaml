@@ -11,6 +11,8 @@
      ~/.config: config/
      ~/.vscode: vscode/
      ~/Library/Application Support/Alfred: alfred/
+     ~/.config/rstudio/themes/joestheme.rstheme: config/rstudio/themes/joestheme.rstheme
+     ~/.config/rstudio/rstudio-prefs.json: config/rstudio/rstudio-prefs.json
      
 - create:
     - ~/downloads
