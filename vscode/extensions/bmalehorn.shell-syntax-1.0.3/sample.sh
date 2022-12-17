@@ -1,5 +1,0 @@
-
-
-echo "hello $USER"
-
-# fi
