@@ -2,20 +2,22 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'morhetz/gruvbox'
-Plug 'rust-lang/rust.vim'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'hachy/eva01.vim', { 'branch': 'main' }
 Plug 'rust-lang/rust.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
+Plug 'vim-syntastic/syntastic'
 Plug 'https://github.com/preservim/nerdtree'
 Plug 'eigenfoo/stan-vim'
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 call plug#end()
-colorscheme gruvbox
+" theme
+colorscheme terafox
+
 filetype plugin indent on
 nmap <F6> :NERDTreeToggle<CR>
-:set number
 set complete+=kspell
 syntax on
 call plug#end()
@@ -26,6 +28,7 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
+let g:airline#extensions#tabline#enabled = 1
 set ruler
 set number
 set nu
@@ -41,14 +44,25 @@ set scrolloff=8
 set relativenumber
 set signcolumn=yes
 set colorcolumn=80
-syntax on
-:au FocusLost * silent! wa
+set autoindent
+set encoding=utf-8
+:au FocusLost * silent! w
+autocmd FocusLost * :w
 inoremap { {}<Esc>ha
 inoremap ( ()<Esc>ha
 inoremap [ []<Esc>ha
 inoremap " ""<Esc>ha
 inoremap ' ''<Esc>ha
 inoremap ` ``<Esc>ha
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
