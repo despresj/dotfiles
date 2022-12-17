@@ -3,5 +3,11 @@
 config/nvim/plugged/
 config/coc/
 config/lvim/
+Alfred/Assistant/Alfred Assistant
+Alfred/Gallery/data/gallery.json
+Alfred/Gallery/data/gallery.json.metadata
+Alfred/powerpack*
+Alfred/prefs.json
+Alfred/usage.data
 Alfred/Alfred.alfredpreferences
 vscode/
