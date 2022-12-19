@@ -7,8 +7,8 @@
 - link:
      ~/.zshrc: zshrc 
      ~/.gitconfig: gitconfig
-     ~/.vimrc: vimrc
-     ~/.config: config/
+     ~/.config/karabiner/karabiner.json: config/karabiner.json
+     ~/.config/nvim/init.vim: vimrc
      ~/.vscode: vscode/
      ~/Library/Application Support/Alfred: alfred/
      ~/.config/rstudio/themes/joestheme.rstheme: config/rstudio/themes/joestheme.rstheme
@@ -20,7 +20,3 @@
 - shell:
 # - [git submodule update --init --recursive, Installing submodules]
   - echo "hey guys"
-  - 
-    command: ./test.zsh
-    stdout: true
-    stderr: true
