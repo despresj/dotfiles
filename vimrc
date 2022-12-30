@@ -5,7 +5,6 @@ Plug 'tpope/vim-surround'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'hachy/eva01.vim', { 'branch': 'main' }
 Plug 'rust-lang/rust.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
 Plug 'vim-syntastic/syntastic'
 Plug 'https://github.com/preservim/nerdtree'
@@ -33,7 +32,6 @@ set ruler
 set number
 set nu
 set hidden
-set nohlsearch
 set complete+=kspell
 set tabstop=2
 set expandtab
