@@ -36,7 +36,6 @@ set ruler
 set number
 set nu
 set hidden
-set nohlsearch
 set complete+=kspell
 set tabstop=2
 set expandtab
