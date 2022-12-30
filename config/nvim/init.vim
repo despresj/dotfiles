@@ -1,1 +1,1 @@
-/Users/josephdespres/.vimrc
+/Users/josephdespres/.dotfiles/vimrc

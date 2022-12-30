@@ -4,8 +4,8 @@
 	process = git-lfs filter-process
 	required = true
 [user]
-	name = joeDespres
-	email = 100436066+joeDespres@users.noreply.github.com 
+	name = despresj
+	email = 54477023+despresj@users.noreply.github.com 
 [credential]
 	helper = osxkeychain
 [init]

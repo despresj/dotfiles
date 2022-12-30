@@ -9,6 +9,7 @@
      ~/.gitconfig: gitconfig
      ~/.config/karabiner/karabiner.json: config/karabiner.json
      ~/.config/nvim/init.vim: vimrc
+     ~/vimrc: vimrc
      ~/.vscode: vscode/
      ~/Library/Application Support/Alfred: alfred/
      ~/.config/rstudio/themes/joestheme.rstheme: config/rstudio/themes/joestheme.rstheme

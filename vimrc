@@ -1,11 +1,11 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'hachy/eva01.vim', { 'branch': 'main' }
 Plug 'rust-lang/rust.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'racer-rust/vim-racer'
 Plug 'dense-analysis/ale'
 Plug 'vim-syntastic/syntastic'
 Plug 'https://github.com/preservim/nerdtree'
@@ -15,6 +15,9 @@ Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 call plug#end()
 " theme
 colorscheme terafox
+
+set hidden
+let g:racer_cmd = "/home/user/.cargo/bin/racer"
 
 filetype plugin indent on
 nmap <F6> :NERDTreeToggle<CR>
@@ -48,9 +51,6 @@ set autoindent
 set encoding=utf-8
 :au FocusLost * silent! w
 autocmd FocusLost * :w
-inoremap { {}<Esc>ha
-inoremap ( ()<Esc>ha
-inoremap [ []<Esc>ha
 inoremap " ""<Esc>ha
 inoremap ' ''<Esc>ha
 inoremap ` ``<Esc>ha
