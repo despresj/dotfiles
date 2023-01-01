@@ -1,3 +1,4 @@
+let mapleader = " "
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -20,13 +21,14 @@ set hidden
 let g:racer_cmd = "/home/user/.cargo/bin/racer"
 
 filetype plugin indent on
-nmap <F6> :NERDTreeToggle<CR>
+nmap <leader>ne :NERDTree<cr>
+nnoremap <leader>n :NERDTreeFocus<CR>
+
 set complete+=kspell
 syntax on
 call plug#end()
 filetype plugin indent on
-let mapleader = ","
-nmap <leader>ne :NERDTree<cr>
+
 let g:SuperTabDefaultCompletionType = "context"
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
@@ -48,6 +50,7 @@ set signcolumn=yes
 set colorcolumn=80
 set autoindent
 set encoding=utf-8
+set hlsearch
 :au FocusLost * silent! w
 autocmd FocusLost * :w
 inoremap " ""<Esc>ha
