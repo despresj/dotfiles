@@ -16,25 +16,20 @@ Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 call plug#end()
 " theme
 colorscheme terafox
-
-set hidden
-let g:racer_cmd = "/home/user/.cargo/bin/racer"
-
 filetype plugin indent on
-nmap <leader>ne :NERDTree<cr>
-nnoremap <leader>n :NERDTreeFocus<CR>
-let g:termdebugger="rust-gdb"
-
-set complete+=kspell
 syntax on
-call plug#end()
 filetype plugin indent on
 
+" rust
+let g:termdebugger="rust-gdb"
 let g:SuperTabDefaultCompletionType = "context"
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
+let g:racer_cmd = "/home/user/.cargo/bin/racer"
 let g:airline#extensions#tabline#enabled = 1
+
+set hidden
 set ruler
 set number
 set nu
@@ -42,6 +37,7 @@ set hidden
 set complete+=kspell
 set tabstop=2
 set expandtab
+set ignorecase
 set smartindent
 set nowrap	
 set incsearch
@@ -52,23 +48,29 @@ set colorcolumn=80
 set autoindent
 set clipboard+=unnamedplus "share with systeh keyboard
 set encoding=utf-8
-set hlsearch
-:au FocusLost * silent! w
-autocmd FocusLost * :w
-inoremap " ""<Esc>ha
-inoremap ' ''<Esc>ha
-inoremap ` ``<Esc>ha
-nnoremap <D-c> "+y
-
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+set updatetime=300
+set signcolumn=yes
+
+" save on lost foxus
+"" autocmd FocusLost * :w
+au FocusLost * if &modified | silent! wa
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" mappings
+"
+nmap <leader>ne :NERDTree<cr>
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <esc><esc> :noh<return>
+inoremap " ""<Esc>ha
+inoremap ' ''<Esc>ha
+inoremap ` ``<Esc>ha
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
@@ -77,6 +79,4 @@ inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float
 vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 
-set updatetime=300
-set signcolumn=yes
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
