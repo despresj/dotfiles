@@ -23,6 +23,7 @@ let g:racer_cmd = "/home/user/.cargo/bin/racer"
 filetype plugin indent on
 nmap <leader>ne :NERDTree<cr>
 nnoremap <leader>n :NERDTreeFocus<CR>
+let g:termdebugger="rust-gdb"
 
 set complete+=kspell
 syntax on
@@ -49,6 +50,7 @@ set relativenumber
 set signcolumn=yes
 set colorcolumn=80
 set autoindent
+set clipboard+=unnamedplus "share with systeh keyboard
 set encoding=utf-8
 set hlsearch
 :au FocusLost * silent! w
@@ -56,6 +58,7 @@ autocmd FocusLost * :w
 inoremap " ""<Esc>ha
 inoremap ' ''<Esc>ha
 inoremap ` ``<Esc>ha
+nnoremap <D-c> "+y
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
