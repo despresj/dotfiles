@@ -20,7 +20,6 @@ call plug#end()
 colorscheme terafox
 filetype plugin indent on
 syntax on
-filetype plugin indent on
 
 " rust
 let g:termdebugger="rust-gdb"
@@ -65,14 +64,19 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" mappings
+" git gutter
 nmap <leader>g :GitGutterLineHighlightsToggle<cr>
-nmap ]o <Plug>(GitGutterNextHunk)
-nmap [u <Plug>(GitGutterPrevHunk)
+nmap ] <Plug>(GitGutterNextHunk)
+nmap [ <Plug>(GitGutterPrevHunk)
+
+highlight GitGutterAdd    guifg=#009900 ctermfg=Green
+highlight GitGutterChange guifg=#bbbb00 ctermfg=Yellow
+highlight GitGutterDelete guifg=#ff2222 ctermfg=Red
 
 nmap <leader>ne :NERDTree<cr>
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <esc><esc> :noh<return>
+let g:gitgutter_highlight_linenrs = 1
 inoremap " ""<Esc>ha
 inoremap ' ''<Esc>ha
 inoremap ` ``<Esc>ha
