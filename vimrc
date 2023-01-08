@@ -67,8 +67,8 @@ let g:syntastic_check_on_wq = 0
 
 " mappings
 nmap <leader>g :GitGutterLineHighlightsToggle<cr>
-nmap ]g <Plug>(GitGutterNextHunk)
-nmap [g <Plug>(GitGutterPrevHunk)
+nmap ]o <Plug>(GitGutterNextHunk)
+nmap [u <Plug>(GitGutterPrevHunk)
 
 nmap <leader>ne :NERDTree<cr>
 nnoremap <leader>n :NERDTreeFocus<CR>
