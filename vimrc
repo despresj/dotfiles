@@ -1,6 +1,8 @@
 let mapleader = " "
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-fugitive'
+Plug 'frazrepo/vim-rainbow'
+Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'hachy/eva01.vim', { 'branch': 'main' }
@@ -28,7 +30,7 @@ let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 let g:racer_cmd = "/home/user/.cargo/bin/racer"
 let g:airline#extensions#tabline#enabled = 1
-
+let g:rainbow_active = 1
 set hidden
 set ruler
 set number
@@ -64,7 +66,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " mappings
-"
+nmap <leader>g :GitGutterLineHighlightsToggle<cr>
+nmap ]g <Plug>(GitGutterNextHunk)
+nmap [g <Plug>(GitGutterPrevHunk)
+
 nmap <leader>ne :NERDTree<cr>
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <esc><esc> :noh<return>
