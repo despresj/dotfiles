@@ -280,7 +280,7 @@ require('gitsigns').setup {
     -- Actions
     map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
     map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
-    map({'n', 'v'}, '<leader>gc', ':Git commit -v<CR>')
+    map({'n', 'v'}, '<leader>gc', ':Git commit -m "commit chunk"<CR>')
 
 
     -- Text object
