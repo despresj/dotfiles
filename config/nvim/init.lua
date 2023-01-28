@@ -280,6 +280,8 @@ require('gitsigns').setup {
     -- Actions
     map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
     map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
+    map({'n', 'v'}, '<leader>gc', ':Git commit -v<CR>')
+
 
     -- Text object
     map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
