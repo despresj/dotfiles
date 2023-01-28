@@ -12,14 +12,19 @@ Plug 'racer-rust/vim-racer'
 Plug 'dense-analysis/ale'
 Plug 'vim-syntastic/syntastic'
 Plug 'https://github.com/preservim/nerdtree'
+Plug 'davidhalter/jedi-vim'
 Plug 'eigenfoo/stan-vim'
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
+
 call plug#end()
 " theme
 colorscheme terafox
 filetype plugin indent on
 syntax on
+let g:syntastic_python_python_exec = 'python3'
+let g:syntastic_python_checkers = ['pylint']
+" Jedi 
 
 " rust
 let g:termdebugger="rust-gdb"
@@ -66,12 +71,15 @@ let g:syntastic_check_on_wq = 0
 
 " git gutter
 nmap <leader>g :GitGutterLineHighlightsToggle<cr>
-nmap ] <Plug>(GitGutterNextHunk)
-nmap [ <Plug>(GitGutterPrevHunk)
+nmap <leader>] <Plug>(GitGutterNextHunk)
+nmap <leader>[ <Plug>(GitGutterPrevHunk)
 
 highlight GitGutterAdd    guifg=#009900 ctermfg=Green
 highlight GitGutterChange guifg=#bbbb00 ctermfg=Yellow
 highlight GitGutterDelete guifg=#ff2222 ctermfg=Red
+"fugitive
+"nnoremap <space>ga :Git add %:p<CR><CR>
+nnoremap <leader>gc :Git commit -v -q<CR>
 
 nmap <leader>ne :NERDTree<cr>
 nnoremap <leader>n :NERDTreeFocus<CR>
