@@ -179,18 +179,21 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
+-- from vimscript file
+vim.o.scrolloff = 8
+vim.o.colorcolumn = "80"
+vim.opt.relativenumber = true
+
+
 -- Set colorscheme
 vim.o.termguicolors = true
 vim.cmd [[colorscheme terafox]]
 vim.cmd([[au FocusLost * if &modified | silent! wa]])
-vim.cmd([[let g:rainbow_active = 1]])
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
 -- [[ Basic Keymaps ]]
--- Set <space> as the leader key
--- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -246,7 +249,10 @@ require('gitsigns').setup {
     changedelete = { text = '~' },
     untracked    = { text = '┆' },
   },
-  signcolumn = true
+  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+  numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
+  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
 }
 
 -- [[ Configure Telescope ]]
