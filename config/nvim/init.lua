@@ -10,6 +10,7 @@ end
 require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
+  use 'simrat39/rust-tools.nvim'
 
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -50,6 +51,7 @@ require('packer').startup(function(use)
 
   use 'EdenEast/nightfox.nvim' -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+  use 'frazrepo/vim-rainbow' -- Rainbow colored brackets
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
@@ -181,7 +183,9 @@ require('gitsigns').setup {
     delete = { text = '_' },
     topdelete = { text = '‾' },
     changedelete = { text = '~' },
+    untracked    = { text = '┆' },
   },
+  signcolumn = true
 }
 
 -- [[ Configure Telescope ]]
