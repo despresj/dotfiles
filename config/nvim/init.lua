@@ -183,6 +183,7 @@ vim.wo.signcolumn = 'yes'
 vim.o.termguicolors = true
 vim.cmd [[colorscheme terafox]]
 vim.cmd([[au FocusLost * if &modified | silent! wa]])
+vim.cmd([[let g:rainbow_active = 1]])
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -400,6 +401,7 @@ end
 --
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
+
 local servers = {
   -- clangd = {},
   -- gopls = {},
@@ -424,7 +426,6 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Setup mason so it can manage external tooling
 require('mason').setup()
-
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
@@ -441,6 +442,17 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+require'lspconfig'.pyright.setup{}
+
+require("lspconfig").rust_analyzer.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  cmd = {
+  "rustup", "run", "stable", "rust-analyzer",
+  }
+}
+
+
 
 -- Turn on lsp status information
 require('fidget').setup()
