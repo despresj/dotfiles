@@ -283,12 +283,15 @@ require('gitsigns').setup {
     -- Actions
     map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
     map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
+    map({'n', 'v'}, '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>')
+    
 
     function GitCommit()
      local commit_message = vim.fn.input("Commit message > ")
-  local git_cmd = "!git commit -m \"" .. commit_message .. "\""
-  vim.api.nvim_command(git_cmd)
-end
+     local git_cmd = "!git commit -m \"" .. commit_message .. "\""
+     vim.api.nvim_command(git_cmd)
+    end
+
 vim.api.nvim_set_keymap("n", "<leader>gc", "<cmd>lua GitCommit()<cr>", {noremap = true})
 
 
