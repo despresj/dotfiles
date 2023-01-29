@@ -23,7 +23,7 @@ require('packer').startup(function(use)
   -- Useful completion sources:
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-nvim-lsp-signature-help'
-  use 'hrsh7th/cmp-vsnip'
+
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/vim-vsnip'
@@ -258,11 +258,6 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- consider this for changing permission via leader x
 --vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
--- diable arrows
-vim.keymap.set({ "n", "v" }, "<Up>", "<NOP>")
-vim.keymap.set({ "n", "v" }, "<Down>", "<NOP>")
-vim.keymap.set({ "n", "v" }, "<Left>", "<NOP>")
-vim.keymap.set({ "n", "v" }, "<Right>", "<NOP>")
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -342,7 +337,9 @@ require('gitsigns').setup {
     -- Actions
     map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>')
     map({ 'n', 'v' }, '<leader>hr', ':Gitsigns reset_hunk<CR>')
+    map({ 'n', 'v' }, '<leader>hn', ':Gitsigns next_hunk<CR>')
     map({ 'n', 'v' }, '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>')
+    map({ 'n', 'v' }, '<leader>gd', ':Gitsigns diffthis<CR>')
 
     function GitCommit()
       local commit_message = vim.fn.input("Commit message > ")
