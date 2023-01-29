@@ -44,8 +44,6 @@ require('packer').startup(function(use)
   }
 
   local rt = require("rust-tools")
-
-
   ---------------------------------
   -- Formatting
   ---------------------------------
