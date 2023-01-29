@@ -292,7 +292,7 @@ require('gitsigns').setup {
      vim.api.nvim_command(git_cmd)
     end
 
-vim.api.nvim_set_keymap("n", "<leader>gc", "<cmd>lua GitCommit()<cr>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>gc", "<cmd>lua GitCommit()<cr><CR>", {noremap = true})
 
 
   end
