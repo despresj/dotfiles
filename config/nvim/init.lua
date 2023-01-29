@@ -1,5 +1,6 @@
 -- Install packer
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim' local is_bootstrap = false
+local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+local is_bootstrap = false
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   is_bootstrap = true
   vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
@@ -10,15 +11,16 @@ require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
   use 'simrat39/rust-tools.nvim'
-    -- other plugins...
+  -- other plugins...
+  use 'jose-elias-alvarez/null-ls.nvim'
 
-    -- Completion framework:
+  -- Completion framework:
   use 'hrsh7th/nvim-cmp'
 
-    -- LSP completion source:
+  -- LSP completion source:
   use 'hrsh7th/cmp-nvim-lsp'
 
-    -- Useful completion sources:
+  -- Useful completion sources:
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-nvim-lsp-signature-help'
   use 'hrsh7th/cmp-vsnip'
@@ -43,49 +45,87 @@ require('packer').startup(function(use)
 
   local rt = require("rust-tools")
 
-rt.setup({
-  server = {
-    on_attach = function(_, bufnr)
-      -- Hover actions
-      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-      -- Code action groups
-      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+
+  ---------------------------------
+  -- Formatting
+  ---------------------------------
+  local diagnostics = require("null-ls").builtins.diagnostics
+  local formatting = require("null-ls").builtins.formatting
+  local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+  require("null-ls").setup({
+    sources = {
+      formatting.black,
+      formatting.rustfmt,
+      formatting.phpcsfixer,
+      formatting.prettier,
+      formatting.stylua,
+    },
+    on_attach = function(client, bufnr)
+      if client.name == "tsserver" or client.name == "rust_analyzer" or client.name == "pyright" then
+        client.resolved_capabilities.document_formatting = false
+      end
+
+      if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          group = augroup,
+          callback = function()
+            vim.lsp.buf.formatting_sync()
+          end,
+        })
+      end
     end,
-  },
-})
-
-  -- LSP Diagnostics Options Setup 
-local sign = function(opts)
-  vim.fn.sign_define(opts.name, {
-    texthl = opts.name,
-    text = opts.text,
-    numhl = ''
   })
-end
 
-sign({name = 'DiagnosticSignError', text = '☠☠'})
-sign({name = 'DiagnosticSignWarn', text = '⚠⚠'})
-sign({name = 'DiagnosticSignHint', text = ''})
-sign({name = 'DiagnosticSignInfo', text = ''})
+  ---------------------------------
+  -- Auto commands
+  ---------------------------------
+  vim.cmd([[ autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync() ]])
 
-vim.diagnostic.config({
+  rt.setup({
+    server = {
+      on_attach = function(_, bufnr)
+        -- Hover actions
+        vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+        -- Code action groups
+        vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+      end,
+    },
+  })
+
+  -- LSP Diagnostics Options Setup
+  local sign = function(opts)
+    vim.fn.sign_define(opts.name, {
+      texthl = opts.name,
+      text = opts.text,
+      numhl = ''
+    })
+  end
+
+  sign({ name = 'DiagnosticSignError', text = '☠☠' })
+  sign({ name = 'DiagnosticSignWarn', text = '⚠⚠' })
+  sign({ name = 'DiagnosticSignHint', text = '' })
+  sign({ name = 'DiagnosticSignInfo', text = '' })
+
+  vim.diagnostic.config({
     virtual_text = true, -- display diagnostics in text
     signs = true,
     update_in_insert = true,
     underline = true,
     severity_sort = false,
     float = {
-        border = 'rounded',
-        source = 'always',
-        header = '',
-        prefix = '',
+      border = 'rounded',
+      source = 'always',
+      header = '',
+      prefix = '',
     },
-})
+  })
 
-vim.cmd([[
+  vim.cmd([[
 set signcolumn=yes
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
-]])
+]] )
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
     requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
@@ -201,7 +241,7 @@ vim.o.completeopt = 'menuone,noselect'
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Keymaps 
+-- Keymaps
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- move highlighted text with a J or K
@@ -216,9 +256,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 -- yank to system clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
--- consider this for changing permission via leader x 
+-- consider this for changing permission via leader x
 --vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- Remap for dealing with word wrap
@@ -260,15 +300,15 @@ require('indent_blankline').setup {
 -- Gitsigns
 -- See `:help gitsigns.txt`
 require('gitsigns').setup {
-  signs = {
-    add = { text = '+'},
-    change = { text = '~' },
-    delete = { text = '_' },
-    topdelete = { text = '‾' },
+  signs      = {
+    add          = { text = '+' },
+    change       = { text = '~' },
+    delete       = { text = '_' },
+    topdelete    = { text = '‾' },
     changedelete = { text = '~' },
     untracked    = { text = '┆' },
   },
-  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+  signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
   numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
@@ -288,26 +328,26 @@ require('gitsigns').setup {
       if vim.wo.diff then return ']c' end
       vim.schedule(function() gs.next_hunk() end)
       return '<Ignore>'
-    end, {expr=true})
+    end, { expr = true })
 
     map('n', '[c', function()
       if vim.wo.diff then return '[c' end
-     vim.schedule(function() gs.prev_hunk() end)
+      vim.schedule(function() gs.prev_hunk() end)
       return '<Ignore>'
-    end, {expr=true})
+    end, { expr = true })
 
     -- Actions
-    map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
-    map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
-    map({'n', 'v'}, '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>')
+    map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>')
+    map({ 'n', 'v' }, '<leader>hr', ':Gitsigns reset_hunk<CR>')
+    map({ 'n', 'v' }, '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>')
 
     function GitCommit()
-     local commit_message = vim.fn.input("Commit message > ")
-     local git_cmd = "!git commit -m \"" .. commit_message .. "\""
-     vim.api.nvim_command(git_cmd)
+      local commit_message = vim.fn.input("Commit message > ")
+      local git_cmd = "!git commit -m \"" .. commit_message .. "\""
+      vim.api.nvim_command(git_cmd)
     end
 
-vim.api.nvim_set_keymap("n", "<leader>gc", "<cmd>lua GitCommit()<cr>", {noremap = true})
+    vim.api.nvim_set_keymap("n", "<leader>gc", "<cmd>lua GitCommit()<cr>", { noremap = true })
 
 
   end
@@ -506,13 +546,13 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
-require'lspconfig'.pyright.setup{}
+require 'lspconfig'.pyright.setup {}
 
 require("lspconfig").rust_analyzer.setup {
   capabilities = capabilities,
   on_attach = on_attach,
   cmd = {
-  "rustup", "run", "stable", "rust-analyzer",
+    "rustup", "run", "stable", "rust-analyzer",
   }
 }
 
@@ -524,13 +564,14 @@ local cmp = require 'cmp'
 
 cmp.setup {
 
-   mapping = {
+  mapping = {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
     -- Add tab support
     ['<C-j>'] = cmp.mapping.scroll_docs(4),
     ['<C-k>'] = cmp.mapping.scroll_docs(-4),
     ['<C-e>'] = cmp.mapping.close(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ['<Tab>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
@@ -538,30 +579,30 @@ cmp.setup {
   },
   -- Installed sources:
   sources = {
-    { name = 'path' },                              -- file paths
-    { name = 'nvim_lsp', keyword_length = 3 },      -- from language server
-    { name = 'nvim_lsp_signature_help'},            -- display function signatures with current parameter emphasized
-    { name = 'nvim_lua', keyword_length = 2},       -- complete neovim's Lua runtime API such vim.lsp.*
-    { name = 'buffer', keyword_length = 2 },        -- source current buffer
-    { name = 'vsnip', keyword_length = 2 },         -- nvim-cmp source for vim-vsnip 
-    { name = 'calc'},                               -- source for math calculation
+    { name = 'path' }, -- file paths
+    { name = 'nvim_lsp', keyword_length = 3 }, -- from language server
+    { name = 'nvim_lsp_signature_help' }, -- display function signatures with current parameter emphasized
+    { name = 'nvim_lua', keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
+    { name = 'buffer', keyword_length = 2 }, -- source current buffer
+    { name = 'vsnip', keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
+    { name = 'calc' }, -- source for math calculation
   },
   window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
   formatting = {
-      fields = {'menu', 'abbr', 'kind'},
-      format = function(entry, item)
-          local menu_icon ={
-              nvim_lsp = 'λ',
-              vsnip = '⋗',
-              buffer = 'Ω',
-              path = '🖫',
-          }
-          item.menu = menu_icon[entry.source.name]
-          return item
-      end,
+    fields = { 'menu', 'abbr', 'kind' },
+    format = function(entry, item)
+      local menu_icon = {
+        nvim_lsp = 'λ',
+        vsnip = '⋗',
+        buffer = 'Ω',
+        path = '🖫',
+      }
+      item.menu = menu_icon[entry.source.name]
+      return item
+    end,
   },
 }
 
