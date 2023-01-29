@@ -204,6 +204,22 @@ vim.g.maplocalleader = ' '
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+-- move highlighted text with a J or K
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+-- make J not move cursor to the end of the line
+vim.keymap.set("n", "J", "mzJ`z")
+-- center on half page jumping
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- keep search terms in the middle of the screen
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+-- yank to system clipboard
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- consider this for changing permission via leader x 
+--vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -291,7 +307,7 @@ require('gitsigns').setup {
      vim.api.nvim_command(git_cmd)
     end
 
-vim.api.nvim_set_keymap("n", "<leader>gc", "<cmd>lua GitCommit()<cr><CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>gc", "<cmd>lua GitCommit()<cr>", {noremap = true})
 
 
   end
