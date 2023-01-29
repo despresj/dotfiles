@@ -63,13 +63,13 @@ local sign = function(opts)
   })
 end
 
-sign({name = 'DiagnosticSignError', text = '!!'})
-sign({name = 'DiagnosticSignWarn', text = '®'})
+sign({name = 'DiagnosticSignError', text = '☠☠'})
+sign({name = 'DiagnosticSignWarn', text = '⚠⚠'})
 sign({name = 'DiagnosticSignHint', text = ''})
 sign({name = 'DiagnosticSignInfo', text = ''})
 
 vim.diagnostic.config({
-    virtual_text = true, -- display diagnostics
+    virtual_text = true, -- display diagnostics in text
     signs = true,
     update_in_insert = true,
     underline = true,
@@ -284,7 +284,6 @@ require('gitsigns').setup {
     map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
     map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
     map({'n', 'v'}, '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>')
-    
 
     function GitCommit()
      local commit_message = vim.fn.input("Commit message > ")
@@ -513,8 +512,8 @@ cmp.setup {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
     -- Add tab support
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-j>'] = cmp.mapping.scroll_docs(4),
+    ['<C-k>'] = cmp.mapping.scroll_docs(-4),
     ['<C-e>'] = cmp.mapping.close(),
     ['<Tab>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Insert,
