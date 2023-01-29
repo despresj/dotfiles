@@ -158,6 +158,9 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 -- Set highlight on search
 vim.o.hlsearch = false
+vim.o.incsearch = true
+
+vim.o.termguicolors = true
 
 -- Make line numbers default
 vim.wo.number = true
@@ -176,7 +179,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 50
 vim.wo.signcolumn = 'yes'
 
 -- from vimscript file
