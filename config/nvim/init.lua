@@ -285,7 +285,7 @@ require('gitsigns').setup {
     map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
 
     function GitCommit()
-     local commit_message = vim.fn.input("Enter commit message: ")
+     local commit_message = vim.fn.input("Commit message > ")
   local git_cmd = "!git commit -m \"" .. commit_message .. "\""
   vim.api.nvim_command(git_cmd)
 end
