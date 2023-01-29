@@ -71,7 +71,7 @@ require('packer').startup(function(use)
         vim.api.nvim_create_autocmd("BufWritePre", {
           group = augroup,
           callback = function()
-            vim.lsp.buf.formatting_sync()
+            vim.lsp.buf.format()
           end,
         })
       end
@@ -81,7 +81,7 @@ require('packer').startup(function(use)
   ---------------------------------
   -- Auto commands
   ---------------------------------
-  vim.cmd([[ autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync() ]])
+  vim.cmd([[ autocmd BufWritePre <buffer> lua vim.lsp.buf.format() ]])
 
   rt.setup({
     server = {
