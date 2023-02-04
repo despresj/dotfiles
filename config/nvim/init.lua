@@ -241,8 +241,7 @@ vim.o.completeopt = "menuone,noselect"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Keymaps
--- See `:help vim.keymap.set()`
+-- Keymapping
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 -- move highlighted text with a J or K
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -325,9 +324,9 @@ require("gitsigns").setup({
     end
 
     -- Navigation
-    map("n", "]c", function()
+    map("n", "g]", function()
       if vim.wo.diff then
-        return "]c"
+        return "g]"
       end
       vim.schedule(function()
         gs.next_hunk()
@@ -335,9 +334,9 @@ require("gitsigns").setup({
       return "<Ignore>"
     end, { expr = true })
 
-    map("n", "[c", function()
+    map("n", "g[", function()
       if vim.wo.diff then
-        return "[c"
+        return "g["
       end
       vim.schedule(function()
         gs.prev_hunk()
@@ -396,8 +395,8 @@ vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc
 vim.keymap.set("n", "<leader><space>", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 
 vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "d[", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "d]", vim.diagnostic.goto_next)
 vim.api.nvim_set_keymap("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", { noremap = true, silent = true })
 
 -- [[ Configure Treesitter ]]
@@ -623,6 +622,49 @@ cmp.setup({
   },
 })
 
+local ls = require("luasnip")
+-- some shorthands...
+local snip = ls.snippet
+local node = ls.snippet_node
+local text = ls.text_node
+local insert = ls.insert_node
+local func = ls.function_node
+local choice = ls.choice_node
+local dynamicn = ls.dynamic_node
+
+local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+keymap("i", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
+keymap("s", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
+keymap("s", "<Tab>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
+keymap("i", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
+keymap("s", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
+
+local date = function()
+  return { os.date("%Y-%m-%d") }
+end
+ls.add_snippets(nil, {
+  all = {
+    snip({
+      trig = "date",
+      namr = "Date",
+      dscr = "Date in the form of YYYY-MM-DD",
+    }, {
+      func(date, {}),
+    }),
+    snip({
+      trig = "println",
+      namr = "print line macro in rust",
+      dscr = "print variable debug in rust",
+    }, {
+      text('println!("'),
+      insert(1, "variable"),
+      text(' = {}", '),
+      insert(2, "variable"),
+      text(");"),
+    }),
+  },
+})
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 -- The line beneath this is called `modeline`. See `:help modeline`
