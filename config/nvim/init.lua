@@ -198,7 +198,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- See `:help vim.o`
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 vim.o.incsearch = true
 
 vim.o.termguicolors = true
@@ -254,6 +254,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- keep search terms in the middle of the screen
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+-- map cs to to clearing search highlights
+vim.keymap.set("n", "cs", ":let @/ = ''<CR>")
 -- yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
