@@ -230,7 +230,7 @@ vim.opt.relativenumber = true
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd([[colorscheme terafox]])
+vim.cmd([[colorscheme carbonfox]])
 vim.cmd([[au FocusLost * if &modified | silent! wa]])
 
 -- Set completeopt to have a better completion experience
