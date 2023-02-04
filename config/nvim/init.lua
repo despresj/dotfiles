@@ -152,7 +152,7 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
   use("nvim-lualine/lualine.nvim") -- Fancier statusline
   use("frazrepo/vim-rainbow") -- Rainbow colored brackets
   use("lukas-reineke/indent-blankline.nvim") -- Add indentation guides even on blank lines
-  use("numToStr/Comment.nvim") -- "gc" to comment visual regions/lines
+  use("numToStr/Comment.nvim")
   use("tpope/vim-sleuth") -- Detect tabstop and shiftwidth automatically
   use("saadparwaiz1/cmp_luasnip")
   use("rafamadriz/friendly-snippets")
@@ -255,14 +255,14 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 -- map cs to to clearing search highlights
-vim.keymap.set("n", "cs", ":let @/ = ''<CR>")
+vim.keymap.set("n", "<leader>cs", ":let @/ = ''<CR>")
 -- yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- consider this for changing permission via leader x
 --vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- save with space s
-vim.keymap.set({ "n", "v" }, "<leader>w", [[:w!<CR>]], { noremap = false })
+vim.keymap.set({ "n", "v" }, "<leader>ww", [[:w!<CR>]], { noremap = false })
 -- TODO: mapping <leader>yf to copy file to system clipboard
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
