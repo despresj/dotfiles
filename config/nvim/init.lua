@@ -13,6 +13,9 @@ require("packer").startup(function(use)
   use("simrat39/rust-tools.nvim")
   -- other plugins...
   use("jose-elias-alvarez/null-ls.nvim")
+  -- nvim tree
+  use("nvim-tree/nvim-web-devicons") -- optional, for file icons
+  use("nvim-tree/nvim-tree.lua")
 
   -- Completion framework:
   use("hrsh7th/nvim-cmp")
@@ -186,6 +189,50 @@ if is_bootstrap then
   return
 end
 
+-- nvim tree
+require("nvim-tree").setup({
+  diagnostics = {
+    enable = true,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    },
+  },
+  renderer = {
+    highlight_git = true,
+    root_folder_modifier = ":t",
+    icons = {
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = true,
+      },
+      glyphs = {
+        default = "",
+        symlink = "",
+        git = {
+          unstaged = "",
+          staged = "S",
+          unmerged = "",
+          renamed = "➜",
+          deleted = "",
+          untracked = "U",
+          ignored = "◌",
+        },
+        folder = {
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+        },
+      },
+    },
+  },
+})
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
