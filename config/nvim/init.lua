@@ -234,6 +234,7 @@ vim.o.termguicolors = true
 vim.cmd([[colorscheme carbonfox]])
 -- vim.cmd([[hi DiagnosticError guifg=Red]])
 vim.cmd([[au FocusLost * if &modified | silent! wa]])
+vim.cmd([[set cursorline]])
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
 
