@@ -186,49 +186,7 @@ if is_bootstrap then
 end
 
 -- nvim tree
-require("nvim-tree").setup({
-  diagnostics = {
-    enable = true,
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
-    },
-  },
-  renderer = {
-    highlight_git = true,
-    root_folder_modifier = ":t",
-    icons = {
-      show = {
-        file = true,
-        folder = true,
-        folder_arrow = true,
-        git = true,
-      },
-      glyphs = {
-        default = "",
-        symlink = "",
-        git = {
-          unstaged = "",
-          staged = "S",
-          unmerged = "",
-          renamed = "➜",
-          deleted = "",
-          untracked = "U",
-          ignored = "◌",
-        },
-        folder = {
-          default = "",
-          open = "",
-          empty = "",
-          empty_open = "",
-          symlink = "",
-        },
-      },
-    },
-  },
-})
+require("nvim-tree").setup({})
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
@@ -274,8 +232,8 @@ vim.opt.relativenumber = true
 -- Set colorscheme
 vim.o.termguicolors = true
 vim.cmd([[colorscheme carbonfox]])
+-- vim.cmd([[hi DiagnosticError guifg=Red]])
 vim.cmd([[au FocusLost * if &modified | silent! wa]])
-
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
 
