@@ -288,8 +288,9 @@ vim.o.completeopt = "menuone,noselect"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+local silent = { silent = true }
 -- Keymapping
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", silent)
 -- move highlighted text with a J or K
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -302,18 +303,25 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 -- map cs to to clearing search highlights
-vim.keymap.set("n", "<leader>cs", ":let @/ = ''<CR>")
+vim.keymap.set("n", "<leader>cs", ":let @/ = ''<CR>", silent)
 -- yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- consider this for changing permission via leader x
 --vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
--- save with space s
-vim.keymap.set({ "n", "v" }, "<leader>ww", [[:w!<CR>]], { noremap = false })
+vim.keymap.set({ "n", "v" }, "<leader>ww", [[:w!<CR>]])
 -- TODO: mapping <leader>yf to copy file to system clipboard
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+-- Terminal --
+-- Better terminal navigation
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", { silent = true })
+vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", silent)
+vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", silent)
+vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", silent)
+vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", silent)
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
