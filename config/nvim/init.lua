@@ -399,6 +399,7 @@ require("gitsigns").setup({
     -- Actions
     map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
     map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
+    map({ "n", "v" }, "<leader>ha", ":Gwrite<CR>")
     map({ "n", "v" }, "<leader>hn", ":Gitsigns next_hunk<CR>")
     map({ "n", "v" }, "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>")
     map({ "n", "v" }, "<leader>gd", ":Gitsigns diffthis<CR>")
