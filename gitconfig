@@ -12,5 +12,7 @@
 	defaultBranch = main
 [pull]
 	ff = only
+[alias]
+	l = log -n 10
 [core]
 	editor = nvim
