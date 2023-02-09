@@ -281,10 +281,6 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Terminal --
 -- Better terminal navigation
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", { silent = true })
-vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", silent)
-vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", silent)
-vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", silent)
-vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", silent)
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
