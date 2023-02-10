@@ -78,6 +78,7 @@ export UPDATE_ZSH_DAYS=13
 plugins=(
 	git
  	zsh-autosuggestions
+	rust
 )
 source $ZSH/oh-my-zsh.sh
 new () {
