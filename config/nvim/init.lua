@@ -371,31 +371,10 @@ require("gitsigns").setup({
       vim.keymap.set(mode, l, r, opts)
     end
 
-    -- Navigation
-    map("n", "g]", function()
-      if vim.wo.diff then
-        return "g]"
-      end
-      vim.schedule(function()
-        gs.next_hunk()
-      end)
-      return "<Ignore>"
-    end, { expr = true })
-
-    map("n", "g[", function()
-      if vim.wo.diff then
-        return "g["
-      end
-      vim.schedule(function()
-        gs.prev_hunk()
-      end)
-      return "<Ignore>"
-    end, { expr = true })
-
     -- Actions
     map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
     map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
-    map({ "n", "v" }, "<leader>ha", ":Gwrite<CR>")
+    map({ "n", "v" }, "<leader>ha", ":Gitsigns <CR>")
     map({ "n", "v" }, "<leader>hn", ":Gitsigns next_hunk<CR>")
     map({ "n", "v" }, "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>")
     map({ "n", "v" }, "<leader>gd", ":Gitsigns diffthis<CR>")
@@ -406,7 +385,7 @@ require("gitsigns").setup({
       vim.api.nvim_command(git_cmd)
     end
 
-    vim.api.nvim_set_keymap("n", "<leader>gc", "<cmd>lua GitCommit()<cr>", { noremap = true })
+    vim.api.nvim_set_keymap("n", "<leader>hc", "<cmd>lua GitCommit()<cr>", { noremap = true })
   end,
 })
 
