@@ -373,10 +373,10 @@ require("gitsigns").setup({
     -- Actions
     map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
     map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
-    map({ "n", "v" }, "<leader>ha", ":Gitsigns <CR>")
+    map({ "n", "v" }, "<leader>hd", ":Gitsigns toggle_deleted<CR>")
+    map({ "n", "v" }, "<leader>ha", ":Gitsigns stage_buffer<CR>")
     map({ "n", "v" }, "<leader>hn", ":Gitsigns next_hunk<CR>")
-    map({ "n", "v" }, "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>")
-    map({ "n", "v" }, "<leader>gd", ":Gitsigns diffthis<CR>")
+    map({ "n", "v" }, "<leader>hb", ":Gitsigns toggle_current_line_blame<CR>")
 
     function GitCommit()
       local commit_message = vim.fn.input("Commit message > ")
