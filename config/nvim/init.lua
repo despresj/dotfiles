@@ -53,7 +53,6 @@ require("packer").startup(function(use)
   ---------------------------------
   -- Formatting
   ---------------------------------
-  local diagnostics = require("null-ls").builtins.diagnostics
   local formatting = require("null-ls").builtins.formatting
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
