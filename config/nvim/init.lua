@@ -33,6 +33,7 @@ require("packer").startup(function(use)
 
   use("windwp/nvim-autopairs")
   -- require("luasnip.loaders.from_vscode").lazy_load()
+  use("akinsho/toggleterm.nvim")
 
   use({ -- LSP Configuration & Plugins
     "neovim/nvim-lspconfig",
@@ -185,6 +186,29 @@ if is_bootstrap then
   return
 end
 
+-- toggle term
+require("toggleterm").setup({
+  size = 20,
+  open_mapping = [[<c-\>]],
+  hide_numbers = true,
+  shade_filetypes = {},
+  shade_terminals = true,
+  shading_factor = 1,
+  start_in_insert = true,
+  insert_mappings = true,
+  persist_size = true,
+  direction = "float",
+  close_on_exit = true,
+  shell = vim.o.shell,
+  float_opts = {
+    border = "curved",
+    winblend = 0,
+    highlights = {
+      border = "Normal",
+      background = "Normal",
+    },
+  },
+})
 -- nvim tree
 require("nvim-tree").setup({})
 -- Automatically source and re-compile packer whenever you save this init.lua
@@ -292,6 +316,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
 })
 
+--toggle term
+vim.keymap.set({ "n", "v" }, "<C-r>", ":TermExec cmd='cargo run' size=20 direction=float<CR>", silent)
+vim.keymap.set({ "n", "v" }, "<C-t>", ":TermExec cmd='cargo test' size=20 direction=float<CR>", silent)
 -- Set lualine as statusline
 -- See `:help lualine.txt`
 require("lualine").setup({
