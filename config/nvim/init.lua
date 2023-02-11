@@ -148,7 +148,7 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
   use("tpope/vim-rhubarb")
   use("lewis6991/gitsigns.nvim")
 
-  use("rebelot/kanagawa.nvim")
+  use("EdenEast/nightfox.nvim")
   use("nvim-lualine/lualine.nvim") -- Fancier statusline
   use("frazrepo/vim-rainbow") -- Rainbow colored brackets
   use("lukas-reineke/indent-blankline.nvim") -- Add indentation guides even on blank lines
@@ -256,7 +256,30 @@ vim.opt.relativenumber = true
 -- Set colorscheme
 vim.o.termguicolors = true
 -- Lua
-vim.cmd([[colorscheme kanagawa]])
+
+-- setup must be called before loading
+local specs = {
+  -- As with palettes, the values defined under `all` will be applied to every style.
+  all = {
+    git = {},
+    diag = {
+      -- error = "",
+      -- warn  = pal.yellow.base,
+      -- info  = pal.blue.base,
+      -- hint  = pal.green.base,
+    },
+    diag_bg = {
+      -- error = C(spec.bg1):blend(C(spec.diag.error), 0.15):to_css(),
+      -- warn  = C(spec.bg1):blend(C(spec.diag.warn), 0.15):to_css(),
+      -- info  = C(spec.bg1):blend(C(spec.diag.info), 0.15):to_css(),
+      -- hint  = C(spec.bg1):blend(C(spec.diag.hint), 0.15):to_css(),
+    },
+  },
+}
+require("nightfox").setup({ specs = specs })
+
+vim.cmd("colorscheme carbonfox")
+
 -- vim.cmd([[hi DiagnosticError guifg=Red]])
 vim.cmd([[au FocusLost * if &modified | silent! wa]])
 vim.cmd([[set cursorline]])
