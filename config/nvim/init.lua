@@ -188,7 +188,6 @@ end
 
 -- toggle term
 require("toggleterm").setup({
-  size = 20,
   open_mapping = [[<c-\>]],
   hide_numbers = true,
   shade_filetypes = {},
@@ -200,8 +199,9 @@ require("toggleterm").setup({
   direction = "float",
   close_on_exit = true,
   shell = vim.o.shell,
+  auto_scroll = true,
   float_opts = {
-    border = "curved",
+    border = "double",
     winblend = 0,
     highlights = {
       border = "Normal",
@@ -401,6 +401,7 @@ require("gitsigns").setup({
     map({ "n", "v" }, "<leader>ha", ":Gitsigns stage_buffer<CR>")
     map({ "n", "v" }, "<leader>hn", ":Gitsigns next_hunk<CR>")
     map({ "n", "v" }, "<leader>hb", ":Gitsigns toggle_current_line_blame<CR>")
+    map({ "n", "v" }, "<leader>hp", ":Gitsigns preview_hunk<CR>")
 
     function GitCommit()
       local commit_message = vim.fn.input("Commit message > ")
