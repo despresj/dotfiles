@@ -175,7 +175,6 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 end)
 -- Default options
 require("nightfox").setup({
-  options = {},
   palettes = {
     carbonfox = {
       red = "#ff0000",
@@ -186,14 +185,11 @@ require("nightfox").setup({
       syntax = {
         builtin0 = "#EE5396",
       },
-     diag = {},
-      diag_bg = {},
       git = {
         changed = "#f4a261",
       }
     },
   },
-  groups = {},
 })
 -- setup must be called before loading
 vim.cmd("colorscheme carbonfox")
