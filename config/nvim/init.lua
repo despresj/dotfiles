@@ -186,9 +186,10 @@ require("nightfox").setup({
       syntax = {
         builtin0 = "#EE5396",
       },
-      diag = {
-      },
-      diag_bg = {
+     diag = {},
+      diag_bg = {},
+      git = {
+        changed = "#f4a261",
       }
     },
   },
