@@ -110,8 +110,8 @@ new () {
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias lg='lazygit'
-alias vim='nvim'
-alias vi='nvim'
+alias vim='nvim -n'
+alias vi='nvim -n'
 alias ls='ls -lAFh --color=tty'
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
