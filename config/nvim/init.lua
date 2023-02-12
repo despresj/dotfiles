@@ -187,7 +187,7 @@ require("nightfox").setup({
       },
       git = {
         changed = "#f4a261",
-      }
+      },
     },
   },
 })
