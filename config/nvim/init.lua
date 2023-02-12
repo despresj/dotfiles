@@ -251,7 +251,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = vim.fn.expand("$MYVIMRC"),
 })
 
-
 -- Set highlight on search
 vim.o.hlsearch = true
 vim.o.incsearch = true
@@ -734,11 +733,14 @@ ls.add_snippets(nil, {
       insert(2, "b"),
       text(");"),
     }),
+    snip({
+      trig = "dbg!",
+      namr = "print debug",
+      dscr = "print variable debug in rust",
+    }, {
+      text("dbg!("),
+      insert(1, "var"),
+      text(");"),
+    }),
   },
 })
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
