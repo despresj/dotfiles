@@ -336,9 +336,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 --toggle term
-vim.keymap.set({ "n", "v" }, "<C-]>", ":w<CR> | :TermExec cmd='cargo run' size=20 direction=float<CR>", silent)
-vim.keymap.set({ "n", "v" }, "<C-[>", ":w<CR> | :TermExec cmd='cargo test' size=20 direction=float<CR>", silent)
--- Set lualine as statusline
+vim.keymap.set({ "n", "v" }, "<C-]>",
+  ":w<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo run || clear' size=20 direction=float<CR>", silent)
+vim.keymap.set({ "n", "v" }, "<C-[>",
+  ":w<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo test' || cleaar size=20 direction=float<CR>", silent)
 -- See `:help lualine.txt`
 require("lualine").setup({
   options = {
