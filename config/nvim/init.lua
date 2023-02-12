@@ -317,8 +317,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 --toggle term
-vim.keymap.set({ "n", "v" }, "<C-r>", ":TermExec cmd='cargo run' size=20 direction=float<CR>", silent)
-vim.keymap.set({ "n", "v" }, "<C-t>", ":TermExec cmd='cargo test' size=20 direction=float<CR>", silent)
+vim.keymap.set({ "n", "v" }, "<C-]>", ":w<CR> | :TermExec cmd='cargo run' size=20 direction=float<CR>", silent)
+vim.keymap.set({ "n", "v" }, "<C-[>", ":w<CR> | :TermExec cmd='cargo test' size=20 direction=float<CR>", silent)
 -- Set lualine as statusline
 -- See `:help lualine.txt`
 require("lualine").setup({
