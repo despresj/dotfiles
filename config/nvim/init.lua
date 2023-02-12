@@ -148,7 +148,8 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
   use("tpope/vim-rhubarb")
   use("lewis6991/gitsigns.nvim")
 
-  use("rebelot/kanagawa.nvim")
+  use("EdenEast/nightfox.nvim")
+
   use("nvim-lualine/lualine.nvim") -- Fancier statusline
   use("frazrepo/vim-rainbow") -- Rainbow colored brackets
   use("lukas-reineke/indent-blankline.nvim") -- Add indentation guides even on blank lines
@@ -172,7 +173,29 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
     require("packer").sync()
   end
 end)
-
+-- Default options
+require("nightfox").setup({
+  options = {},
+  palettes = {
+    carbonfox = {
+      red = "#ff0000",
+    },
+  },
+  specs = {
+    carbonfox = {
+      syntax = {
+        builtin0 = "#EE5396",
+      },
+      diag = {
+      },
+      diag_bg = {
+      }
+    },
+  },
+  groups = {},
+})
+-- setup must be called before loading
+vim.cmd("colorscheme carbonfox")
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
 --
@@ -256,7 +279,6 @@ vim.opt.relativenumber = true
 -- Set colorscheme
 vim.o.termguicolors = true
 -- Lua
-vim.cmd([[colorscheme kanagawa]])
 -- vim.cmd([[hi DiagnosticError guifg=Red]])
 vim.cmd([[au FocusLost * if &modified | silent! wa]])
 vim.cmd([[set cursorline]])
