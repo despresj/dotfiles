@@ -251,8 +251,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = vim.fn.expand("$MYVIMRC"),
 })
 
--- [[ Setting options ]]
--- See `:help vim.o`
 
 -- Set highlight on search
 vim.o.hlsearch = true
@@ -294,7 +292,6 @@ vim.cmd([[set wrap!]])
 vim.o.completeopt = "menuone,noselect"
 
 -- [[ Basic Keymaps ]]
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -318,15 +315,14 @@ vim.keymap.set("n", "<leader>cs", ":let @/ = ''<CR>", silent)
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- consider this for changing permission via leader x
---vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+--vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>ww", [[:wa<CR>]])
 -- window resizing
-vim.keymap.set("n", "<C-=>", ":resize +2<CR>") --, { noremap = true, silent = true })
-vim.keymap.set("n", "<C-->", ":resize -2<CR>") --, { noremap = true, silent = true })
-vim.keymap.set("n", "<C-+>", ":vertical resize +2<CR>") --, { noremap = true, silent = true })
-vim.keymap.set("n", "<C-_>", ":vertical resize -2<CR>") --, { noremap = true, silent = true })
+vim.keymap.set("n", "<C-=>", ":resize +2<CR>")
+vim.keymap.set("n", "<C-->", ":resize -2<CR>")
+vim.keymap.set("n", "<C-+>", ":vertical resize +2<CR>")
+vim.keymap.set("n", "<C-_>", ":vertical resize -2<CR>")
 
--- TODO: mapping <leader>yf to copy file to system clipboard
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -392,8 +388,6 @@ cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = 
 -- Enable Comment.nvim
 require("Comment").setup()
 
--- Enable `lukas-reineke/indent-blankline.nvim`
--- See `:help indent_blankline.txt`
 require("indent_blankline").setup({
   char = "┊",
   show_trailing_blankline_indent = false,
@@ -409,10 +403,10 @@ require("gitsigns").setup({
     changedelete = { text = "~" },
     untracked = { text = "ⓤ" },
   },
-  signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-  numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
-  linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
-  word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+  signcolumn = true,
+  numhl = true,
+  linehl = false,
+  word_diff = false,
 
   -- Actions
   on_attach = function(bufnr)
@@ -480,10 +474,7 @@ vim.keymap.set("n", "d[", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "d]", vim.diagnostic.goto_next)
 vim.api.nvim_set_keymap("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", { noremap = true, silent = true })
 
--- [[ Configure Treesitter ]]
--- See `:help nvim-treesitter`
 require("nvim-treesitter.configs").setup({
-  -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { "lua", "python", "rust", "help", "vim" },
 
   highlight = { enable = true },
@@ -588,19 +579,10 @@ local on_attach = function(_, bufnr)
   end, { desc = "Format current buffer with LSP" })
 end
 
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
-
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
+  pyright = {},
+  r_language_server = {},
   rust_analyzer = {},
-  -- tsserver = {},
-
   sumneko_lua = {
     Lua = {
       workspace = { checkThirdParty = false },
