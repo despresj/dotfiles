@@ -276,8 +276,14 @@ vim.opt.relativenumber = true
 -- Set colorscheme
 vim.o.termguicolors = true
 -- Lua
--- vim.cmd([[hi DiagnosticError guifg=Red]])
-vim.cmd([[au FocusLost * if &modified | silent! wa]])
+local function autosave_on_focus_lost()
+  if vim.api.nvim_get_mode().mode == "n" then
+    vim.api.nvim_command("wa")
+  end
+end
+
+vim.api.nvim_command("au FocusLost * lua autosave_on_focus_lost()")
+
 vim.cmd([[set cursorline]])
 vim.cmd([[set wrap!]])
 -- Set completeopt to have a better completion experience
@@ -309,7 +315,7 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- consider this for changing permission via leader x
 --vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-vim.keymap.set({ "n", "v" }, "<leader>ww", [[:w!<CR>]])
+vim.keymap.set({ "n", "v" }, "<leader>ww", [[:wa<CR>]])
 -- window resizing
 vim.keymap.set("n", "<C-=>", ":resize +2<CR>") --, { noremap = true, silent = true })
 vim.keymap.set("n", "<C-->", ":resize -2<CR>") --, { noremap = true, silent = true })
@@ -336,8 +342,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 --toggle term
-vim.keymap.set({ "n", "v" }, "<C-]>", ":w<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo run' <CR>", silent)
-vim.keymap.set({ "n", "v" }, "<C-[>", ":w<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo test' <CR>", silent)
+vim.keymap.set({ "n", "v" }, "<C-]>", ":wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo run' <CR>", silent)
+vim.keymap.set({ "n", "v" }, "<C-[>", ":wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo test' <CR>", silent)
 -- See `:help lualine.txt`
 require("lualine").setup({
   options = {
