@@ -237,7 +237,7 @@ require("auto-save").setup({
     message = function()
       return ("Autosaved: " .. vim.fn.strftime("%H:%M:%S"))
     end,
-    cleaning_interval = 2500, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
+    cleaning_interval = 2500,
   },
   trigger_events = { "FocusLost" },
 })
