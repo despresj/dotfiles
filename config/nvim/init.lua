@@ -149,6 +149,8 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
   use("lewis6991/gitsigns.nvim")
 
   use("EdenEast/nightfox.nvim")
+  -- autosave
+  use("pocco81/auto-save.nvim")
 
   use("nvim-lualine/lualine.nvim") -- Fancier statusline
   use("frazrepo/vim-rainbow") -- Rainbow colored brackets
@@ -229,6 +231,16 @@ require("toggleterm").setup({
     },
   },
 })
+--autosave
+require("auto-save").setup({
+  execution_message = {
+    message = function()
+      return ("Autosaved: " .. vim.fn.strftime("%H:%M:%S"))
+    end,
+    cleaning_interval = 2500, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
+  },
+  trigger_events = { "FocusLost" },
+})
 -- nvim tree
 require("nvim-tree").setup({})
 -- Automatically source and re-compile packer whenever you save this init.lua
@@ -275,14 +287,6 @@ vim.opt.relativenumber = true
 
 -- Set colorscheme
 vim.o.termguicolors = true
--- Lua
-local function autosave_on_focus_lost()
-  if vim.api.nvim_get_mode().mode == "n" then
-    vim.api.nvim_command("wa")
-  end
-end
-
-vim.api.nvim_command("au FocusLost * lua autosave_on_focus_lost()")
 
 vim.cmd([[set cursorline]])
 vim.cmd([[set wrap!]])
