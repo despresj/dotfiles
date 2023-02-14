@@ -196,7 +196,6 @@ require("nightfox").setup({
 -- setup must be called before loading
 vim.cmd("colorscheme carbonfox")
 require("gitlinker").setup({
-  mappings = "<leader>hy",
 })
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
@@ -313,6 +312,13 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 -- map cs to to clearing search highlights
 vim.keymap.set("n", "<leader>cs", ":let @/ = ''<CR>", silent)
+vim.keymap.set(
+  { "n", "v" },
+  "<leader>hy",
+  '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>'
+  ,
+  { silent = true }
+)
 -- yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
