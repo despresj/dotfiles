@@ -161,7 +161,7 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
   use("rafamadriz/friendly-snippets")
   -- Fuzzy Finder (files, lsp, etc)
   use({ "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } })
-
+  use("ruifm/gitlinker.nvim")
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable("make") == 1 })
 
@@ -195,6 +195,9 @@ require("nightfox").setup({
 })
 -- setup must be called before loading
 vim.cmd("colorscheme carbonfox")
+require("gitlinker").setup({
+  mappings = "<leader>hy",
+})
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
 --
