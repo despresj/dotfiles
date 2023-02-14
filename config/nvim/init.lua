@@ -195,8 +195,7 @@ require("nightfox").setup({
 })
 -- setup must be called before loading
 vim.cmd("colorscheme carbonfox")
-require("gitlinker").setup({
-})
+require("gitlinker").setup({})
 -- When we are bootstrapping a configuration, it doesn't
 -- make sense to execute the rest of the init.lua.
 --
@@ -351,8 +350,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 --toggle term
-vim.keymap.set({ "n", "v" }, "<C-]>", ":wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo run' <CR>", silent)
-vim.keymap.set({ "n", "v" }, "<C-[>", ":wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo test' <CR>", silent)
+vim.keymap.set({ "n", "v" }, "<C-Semicolon>", ":wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo run' <CR>", silent)
+vim.keymap.set({ "n", "v" }, "<C-]>", ":wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo test' <CR>", silent)
 -- See `:help lualine.txt`
 require("lualine").setup({
   options = {
