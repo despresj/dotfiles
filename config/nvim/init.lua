@@ -433,7 +433,7 @@ require("gitsigns").setup({
     end
 
     -- Actions
-    map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
+    map({ "n", "v" }, "<leader>hf", ":Gitsigns stage_hunk<CR>")
     map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
     map({ "n", "v" }, "<leader>hd", ":Gitsigns toggle_deleted<CR>")
     map({ "n", "v" }, "<leader>ha", ":Gitsigns stage_buffer<CR>")
