@@ -319,6 +319,13 @@ vim.keymap.set(
   ,
   { silent = true }
 )
+vim.keymap.set(
+  { "n", "v" },
+  "<leader>ht",
+  '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>'
+  ,
+  { silent = true }
+)
 -- yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
@@ -430,7 +437,7 @@ require("gitsigns").setup({
     map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
     map({ "n", "v" }, "<leader>hd", ":Gitsigns toggle_deleted<CR>")
     map({ "n", "v" }, "<leader>ha", ":Gitsigns stage_buffer<CR>")
-    map({ "n", "v" }, "<leader>hn", ":Gitsigns next_hunk<CR>")
+    map({ "n", "v" }, "<leader>hh", ":Gitsigns next_hunk<CR>")
     map({ "n", "v" }, "<leader>hb", ":Gitsigns toggle_current_line_blame<CR>")
     map({ "n", "v" }, "<leader>hp", ":Gitsigns preview_hunk<CR>")
     map({ "n", "v" }, "<leader>hm", ":Git commit --amend --no-edit")
