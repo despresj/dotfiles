@@ -441,7 +441,7 @@ require("gitsigns").setup({
     map({ "n", "v" }, "<leader>hb", ":Gitsigns toggle_current_line_blame<CR>")
     map({ "n", "v" }, "<leader>hp", ":Gitsigns preview_hunk<CR>")
     map({ "n", "v" }, "<leader>hm", ":Git commit --amend --no-edit")
-    map({ "n", "v" }, "<leader>hr", ":Git push")
+    map({ "n", "v" }, "<leader>hr", ":Git push<CR>")
 
     function GitCommit()
       local commit_message = vim.fn.input("Commit message > ")
