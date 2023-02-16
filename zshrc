@@ -14,6 +14,7 @@ PROMPT='
 RPROMPT='%*'
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/josephdespres/.oh-my-zsh"
+export VIMCONFIG="~/.dotfiles/config/nvim/init.lua"
 # adding syntax highlighting for man pages
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 ZSH_THEME="robbyrussell"
@@ -35,3 +36,4 @@ alias lg='lazygit'
 alias vim='nvim -n'
 alias vi='nvim -n'
 alias ls='ls -lAFh --color=tty'
+
