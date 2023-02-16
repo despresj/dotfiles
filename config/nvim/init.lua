@@ -434,13 +434,13 @@ require("gitsigns").setup({
     end
 
     -- Actions
-    map({ "n", "v" }, "<leader>hf", ":Gitsigns stage_hunk<CR>")
+    map({ "n", "v" }, "<leader>hf", ":Gitsigns stage_hunk<CR>", { silent = true })
     map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
-    map({ "n", "v" }, "<leader>hd", ":Gitsigns toggle_deleted<CR>")
+    map({ "n", "v" }, "<leader>hd", ":Gitsigns toggle_deleted<CR>", { silent = true })
     map({ "n", "v" }, "<leader>ha", ":Gitsigns stage_buffer<CR>")
-    map({ "n", "v" }, "<leader>hh", ":Gitsigns next_hunk<CR>")
-    map({ "n", "v" }, "<leader>hb", ":Gitsigns toggle_current_line_blame<CR>")
-    map({ "n", "v" }, "<leader>hp", ":Gitsigns preview_hunk<CR>")
+    map({ "n", "v" }, "<leader>hh", ":Gitsigns next_hunk<CR>", { silent = true })
+    map({ "n", "v" }, "<leader>hb", ":Gitsigns toggle_current_line_blame<CR>", { silent = true })
+    map({ "n", "v" }, "<leader>hp", ":Gitsigns preview_hunk<CR>", { silent = true })
     map({ "n", "v" }, "<leader>hm", ":Git commit --amend --no-edit")
     map({ "n", "v" }, "<leader>hg", ":Git push")
 
