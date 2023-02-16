@@ -298,7 +298,7 @@ vim.g.maplocalleader = " "
 
 local silent = { silent = true }
 -- Keymapping
-vim.api.nvim_set_keymap('n', '<leader>vi', ':e $VIMCONFIG<CR>', silent)
+vim.api.nvim_set_keymap("n", "<leader>vi", ":e $VIMCONFIG<CR>", silent)
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", silent)
 -- move highlighted text with a J or K
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
