@@ -8,125 +8,125 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 require("packer").startup(function(use)
-  -- Package manager
-  use("wbthomason/packer.nvim")
-  use("simrat39/rust-tools.nvim")
-  -- other plugins...
-  use("jose-elias-alvarez/null-ls.nvim")
-  -- nvim tree
-  use("nvim-tree/nvim-web-devicons") -- optional, for file icons
-  use("nvim-tree/nvim-tree.lua")
+	-- Package manager
+	use("wbthomason/packer.nvim")
+	use("simrat39/rust-tools.nvim")
+	-- other plugins...
+	use("jose-elias-alvarez/null-ls.nvim")
+	-- nvim tree
+	use("nvim-tree/nvim-web-devicons") -- optional, for file icons
+	use("nvim-tree/nvim-tree.lua")
 
-  -- Completion framework:
-  use("hrsh7th/nvim-cmp")
-  -- LSP completion source:
-  use("hrsh7th/cmp-nvim-lsp")
+	-- Completion framework:
+	use("hrsh7th/nvim-cmp")
+	-- LSP completion source:
+	use("hrsh7th/cmp-nvim-lsp")
 
-  -- Useful completion sources:
-  use("hrsh7th/cmp-nvim-lua")
-  use("hrsh7th/cmp-nvim-lsp-signature-help")
+	use("feline-nvim/feline.nvim")
+	-- Useful completion sources:
+	use("hrsh7th/cmp-nvim-lua")
+	use("hrsh7th/cmp-nvim-lsp-signature-help")
 
-  use("hrsh7th/cmp-path")
-  use("hrsh7th/cmp-buffer")
-  use("hrsh7th/vim-vsnip")
-  use("L3MON4D3/LuaSnip")
+	use("hrsh7th/cmp-path")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/vim-vsnip")
+	use("L3MON4D3/LuaSnip")
 
-  use("windwp/nvim-autopairs")
-  -- require("luasnip.loaders.from_vscode").lazy_load()
-  use("akinsho/toggleterm.nvim")
+	use("windwp/nvim-autopairs")
+	use("akinsho/toggleterm.nvim")
 
-  use({ -- LSP Configuration & Plugins
-    "neovim/nvim-lspconfig",
-    requires = {
-      -- Automatically install LSPs to stdpath for neovim
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+	use({ -- LSP Configuration & Plugins
+		"neovim/nvim-lspconfig",
+		requires = {
+			-- Automatically install LSPs to stdpath for neovim
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
 
-      -- Useful status updates for LSP
-      "j-hui/fidget.nvim",
+			-- Useful status updates for LSP
+			"j-hui/fidget.nvim",
 
-      -- Additional lua configuration, makes nvim stuff amazing
-      "folke/neodev.nvim",
-    },
-  })
+			-- Additional lua configuration, makes nvim stuff amazing
+			"folke/neodev.nvim",
+		},
+	})
 
-  local rt = require("rust-tools")
-  ---------------------------------
-  -- Formatting
-  ---------------------------------
-  local formatting = require("null-ls").builtins.formatting
-  local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+	local rt = require("rust-tools")
+	---------------------------------
+	-- Formatting
+	---------------------------------
+	local formatting = require("null-ls").builtins.formatting
+	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-  require("null-ls").setup({
-    sources = {
-      formatting.black,
-      formatting.rustfmt,
-      formatting.phpcsfixer,
-      formatting.prettier,
-      formatting.stylua,
-    },
-    on_attach = function(client, bufnr)
-      if client.name == "tsserver" or client.name == "rust_analyzer" or client.name == "pyright" then
-        client.resolved_capabilities.document_formatting = false
-      end
+	require("null-ls").setup({
+		sources = {
+			formatting.black,
+			formatting.rustfmt,
+			formatting.phpcsfixer,
+			formatting.prettier,
+			formatting.stylua,
+		},
+		on_attach = function(client, bufnr)
+			if client.name == "tsserver" or client.name == "rust_analyzer" or client.name == "pyright" then
+				client.resolved_capabilities.document_formatting = false
+			end
 
-      if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          group = augroup,
-          callback = function()
-            vim.lsp.buf.format()
-          end,
-        })
-      end
-    end,
-  })
+			if client.supports_method("textDocument/formatting") then
+				vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+				vim.api.nvim_create_autocmd("BufWritePre", {
+					group = augroup,
+					callback = function()
+						vim.lsp.buf.format()
+					end,
+				})
+			end
+		end,
+	})
 
-  ---------------------------------
-  -- Auto commands
-  ---------------------------------
-  vim.cmd([[ autocmd BufWritePre <buffer> lua vim.lsp.buf.format() ]])
+	---------------------------------
+	-- Auto commands
+	---------------------------------
+	vim.cmd([[ autocmd BufWritePre <buffer> lua vim.lsp.buf.format() ]])
 
-  rt.setup({
-    server = {
-      on_attach = function(_, bufnr)
-        -- Hover actions
-        vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-        -- Code action groups
-        vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-      end,
-    },
-  })
+	rt.setup({
+		server = {
+			on_attach = function(_, bufnr)
+				-- Hover actions
+				vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+				-- Code action groups
+				vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+			end,
+		},
+	})
 
-  -- LSP Diagnostics Options Setup
-  local sign = function(opts)
-    vim.fn.sign_define(opts.name, {
-      texthl = opts.name,
-      text = opts.text,
-      numhl = "",
-    })
-  end
+	-- LSP Diagnostics Options Setup
+	local sign = function(opts)
+		vim.fn.sign_define(opts.name, {
+			texthl = opts.name,
+			text = opts.text,
+			numhl = "",
+		})
+	end
 
-  sign({ name = "DiagnosticSignError", text = "☠☠" })
-  sign({ name = "DiagnosticSignWarn", text = "⚠⚠" })
-  sign({ name = "DiagnosticSignHint", text = "" })
-  sign({ name = "DiagnosticSignInfo", text = "" })
+	sign({ name = "DiagnosticSignError", text = "☠☠" })
+	sign({ name = "DiagnosticSignWarn", text = "⚠⚠" })
+	sign({ name = "DiagnosticSignHint", text = "" })
+	sign({ name = "DiagnosticSignInfo", text = "" })
 
-  vim.diagnostic.config({
-    virtual_text = true, -- display diagnostics in text
-    signs = true,
-    update_in_insert = true,
-    underline = true,
-    severity_sort = false,
-    float = {
-      border = "rounded",
-      source = "always",
-      header = "",
-      prefix = "",
-    },
-  })
+	vim.diagnostic.config({
+		virtual_text = true, -- display diagnostics in text
+		signs = true,
+		update_in_insert = true,
+		underline = true,
+		severity_sort = false,
+		float = {
+			border = "rounded",
+			source = "always",
+			header = "",
+			prefix = "",
+		},
+	})
 
-  vim.cmd([[
+	vim.cmd([[
 set signcolumn=yes
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 ]] )
@@ -194,6 +194,9 @@ require("nightfox").setup({
     },
   },
 })
+vim.cmd("set termguicolors")
+require("feline").setup()
+
 -- setup must be called before loading
 vim.cmd("colorscheme carbonfox")
 require("gitlinker").setup({})
@@ -361,15 +364,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 --toggle term
 vim.keymap.set({ "n", "v" }, "<C-]>", ":wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo run' <CR>", silent)
 vim.keymap.set({ "n", "v" }, "<C-'>", ":wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo test' <CR>", silent)
--- See `:help lualine.txt`
-require("lualine").setup({
-  options = {
-    icons_enabled = false,
-    theme = "onedark",
-    component_separators = "|",
-    section_separators = "",
-  },
-})
 local status_ok, npairs = pcall(require, "nvim-autopairs")
 if not status_ok then
   return
