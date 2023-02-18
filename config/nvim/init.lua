@@ -241,9 +241,9 @@ require("auto-save").setup({
 		message = function()
 			return ("Autosaved: " .. vim.fn.strftime("%H:%M:%S"))
 		end,
-		cleaning_interval = 2500,
+		cleaning_interval = 5000,
 	},
-	trigger_events = { "FocusLost" },
+	trigger_events = { "FocusLost", "Bufleave", "ExitPre" },
 })
 -- nvim tree
 require("nvim-tree").setup({})
