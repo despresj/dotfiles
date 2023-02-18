@@ -9,8 +9,6 @@
      ~/.gitconfig: gitconfig
      ~/.config/karabiner/karabiner.json: config/karabiner.json
      ~/.config/nvim/init.lua: config/nvim/init.lua 
-     ~/.vscode: vscode/
-     ~/Library/Application Support/Alfred: alfred/
      ~/.config/rstudio/themes/joestheme.rstheme: config/rstudio/themes/joestheme.rstheme
      ~/.config/rstudio/rstudio-prefs.json: config/rstudio/rstudio-prefs.json
      
@@ -18,5 +16,4 @@
     - ~/.config/nvim/
 
 - shell:
-# - [git submodule update --init --recursive, Installing submodules]
   - echo "hey guys"
