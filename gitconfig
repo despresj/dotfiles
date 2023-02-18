@@ -6,13 +6,17 @@
 [user]
 	name = despresj
 	email = 54477023+despresj@users.noreply.github.com 
-[credential]
-	helper = osxkeychain
-[init]
-	defaultBranch = main
 [pull]
 	ff = only
 [alias]
 	l = log -n 10
 [core]
 	editor = nvim
+[init]
+	defaultBranch = main
+[core]
+	editor = nvim
+[log]
+  date = relative
+[format]
+  pretty = format:%h %Cblue%ad%Creset %an %Cgreen%s%Creset
