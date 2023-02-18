@@ -13,7 +13,7 @@ PROMPT='
 %1~ %L %# '
 RPROMPT='%*'
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/josephdespres/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export VIMCONFIG="~/.dotfiles/config/nvim/init.lua"
 # adding syntax highlighting for man pages
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
