@@ -89,8 +89,7 @@ require("packer").startup(function(use)
 				-- Hover actions
 				vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
 				-- Code action groups
-				vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group,
-					{ buffer = bufnr })
+				vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
 			end,
 		},
 	})
@@ -154,7 +153,6 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 	use("frazrepo/vim-rainbow") -- Rainbow colored brackets
 	use("lukas-reineke/indent-blankline.nvim") -- Add indentation guides even on blank lines
 	use("numToStr/Comment.nvim")
-	use("tpope/vim-sleuth") -- Detect tabstop and shiftwidth automatically
 	use("saadparwaiz1/cmp_luasnip")
 	use("rafamadriz/friendly-snippets")
 	-- Fuzzy Finder (files, lsp, etc)
@@ -193,6 +191,8 @@ require("nightfox").setup({
 	},
 })
 vim.cmd("set termguicolors")
+vim.cmd("set tabstop=4")
+
 require("feline").setup()
 
 -- setup must be called before loading
@@ -379,8 +379,7 @@ if not status_ok then
 	return
 end
 
-require("nvim-surround").setup(
-)
+require("nvim-surround").setup()
 
 npairs.setup({
 	check_ts = true,
