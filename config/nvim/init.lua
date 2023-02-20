@@ -9,6 +9,7 @@ end
 
 require("packer").startup(function(use)
 	-- Package manager
+	use("norcalli/nvim-colorizer.lua")
 	use("wbthomason/packer.nvim")
 	use("simrat39/rust-tools.nvim")
 	-- other plugins...
@@ -192,7 +193,7 @@ require("nightfox").setup({
 })
 vim.cmd("set termguicolors")
 vim.cmd("set tabstop=4")
-
+require("colorizer").setup()
 require("feline").setup()
 
 -- setup must be called before loading
