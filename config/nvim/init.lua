@@ -16,26 +16,22 @@ require("packer").startup(function(use)
 	-- nvim tree
 	use("nvim-tree/nvim-web-devicons") -- optional, for file icons
 	use("nvim-tree/nvim-tree.lua")
-
 	-- Completion framework:
 	use("hrsh7th/nvim-cmp")
 	-- LSP completion source:
 	use("hrsh7th/cmp-nvim-lsp")
-
 	use("feline-nvim/feline.nvim")
 	-- Useful completion sources:
 	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/cmp-nvim-lsp-signature-help")
-
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/vim-vsnip")
 	use("L3MON4D3/LuaSnip")
-
 	use("windwp/nvim-autopairs")
 	use("akinsho/toggleterm.nvim")
-
-	use({ -- LSP Configuration & Plugins
+	use({
+		-- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
 		requires = {
 			-- Automatically install LSPs to stdpath for neovim
@@ -93,7 +89,8 @@ require("packer").startup(function(use)
 				-- Hover actions
 				vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
 				-- Code action groups
-				vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+				vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group,
+					{ buffer = bufnr })
 			end,
 		},
 	})
@@ -131,14 +128,16 @@ set signcolumn=yes
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 ]])
 
-	use({ -- Highlight, edit, and navigate code
+	use({
+		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
 			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
 		end,
 	})
 
-	use({ -- Additional text objects via treesitter
+	use({
+		-- Additional text objects via treesitter
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		after = "nvim-treesitter",
 	})
@@ -239,7 +238,7 @@ require("toggleterm").setup({
 require("auto-save").setup({
 	execution_message = {
 		message = function()
-			return ("Autosaved: " .. vim.fn.strftime("%H:%M:%S"))
+			return ("Autosaved at" .. vim.fn.strftime("%H:%M:%S"))
 		end,
 		cleaning_interval = 5000,
 	},
@@ -320,15 +319,13 @@ vim.keymap.set("n", "<leader>cs", ":let @/ = ''<CR>", silent)
 vim.keymap.set(
 	{ "n", "v" },
 	"<leader>hy",
-	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>'
-	,
+	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>',
 	{ silent = true }
 )
 vim.keymap.set(
 	{ "n", "v" },
 	"<leader>ht",
-	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>'
-	,
+	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
 	{ silent = true }
 )
 -- yank to system clipboard
@@ -419,7 +416,6 @@ require("gitsigns").setup({
 	numhl = true,
 	linehl = false,
 	word_diff = false,
-
 	-- Actions
 	on_attach = function(bufnr)
 		local function map(mode, l, r, opts)
@@ -429,11 +425,11 @@ require("gitsigns").setup({
 		end
 
 		-- Actions
-		map({ "n", "v" }, "<leader>hf", ":Gitsigns stage_hunk<CR>")
+		map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
 		map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
 		map({ "n", "v" }, "<leader>hd", ":Gitsigns toggle_deleted<CR>")
 		map({ "n", "v" }, "<leader>ha", ":Gitsigns stage_buffer<CR>")
-		map({ "n", "v" }, "<leader>hh", ":Gitsigns next_hunk<CR>")
+		map({ "n", "v" }, "<leader>hn", ":Gitsigns next_hunk<CR>")
 		map({ "n", "v" }, "<leader>hb", ":Gitsigns toggle_current_line_blame<CR>")
 		map({ "n", "v" }, "<leader>hp", ":STOP USE <leader>hv")
 		map({ "n", "v" }, "<leader>hv", ":Gitsigns preview_hunk<CR>")
@@ -489,7 +485,6 @@ vim.api.nvim_set_keymap("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", { n
 
 require("nvim-treesitter.configs").setup({
 	ensure_installed = { "lua", "python", "rust", "help", "vim" },
-
 	highlight = { enable = true },
 	indent = { enable = true, disable = { "python" } },
 	incremental_selection = {
@@ -649,13 +644,12 @@ require("fidget").setup()
 local cmp = require("cmp")
 
 cmp.setup({
-
 	mapping = {
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),
 		-- Add tab support
 		["<C-j>"] = cmp.mapping.scroll_docs(4),
-		["<C-k>"] = cmp.mapping.scroll_docs(-4),
+		["<C-k>"] = cmp.mapping.scroll_docs( -4),
 		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
 		["<Tab>"] = cmp.mapping.confirm({
@@ -672,11 +666,11 @@ cmp.setup({
 	sources = {
 		{ name = "path" }, -- file paths
 		{ name = "luasnip" },
-		{ name = "nvim_lsp", keyword_length = 3 }, -- from language server
+		{ name = "nvim_lsp",               keyword_length = 3 }, -- from language server
 		{ name = "nvim_lsp_signature_help" }, -- display function signatures with current parameter emphasized
-		{ name = "nvim_lua", keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
-		{ name = "buffer", keyword_length = 2 }, -- source current buffer
-		{ name = "vsnip", keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
+		{ name = "nvim_lua",               keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
+		{ name = "buffer",                 keyword_length = 2 }, -- source current buffer
+		{ name = "vsnip",                  keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
 		{ name = "calc" }, -- source for math calculation
 	},
 	window = {
