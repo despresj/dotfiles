@@ -9,6 +9,7 @@ end
 
 require("packer").startup(function(use)
 	-- Package manager
+    use("romgrk/barbar.nvim")
 	use("norcalli/nvim-colorizer.lua")
 	use("wbthomason/packer.nvim")
 	use("simrat39/rust-tools.nvim")
@@ -90,7 +91,8 @@ require("packer").startup(function(use)
 				-- Hover actions
 				vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
 				-- Code action groups
-				vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+				vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group,
+					{ buffer = bufnr })
 			end,
 		},
 	})
@@ -360,6 +362,11 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Terminal --
 -- Better terminal navigation
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", { silent = true })
+
+-- Move to previous/next
+vim.api.nvim_set_keymap("n", "<leader>bl", "<Cmd>BufferNext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>bh", "<Cmd>BufferPrevious<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>bc", "<Cmd>BufferClose<CR>", { noremap = true, silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -655,16 +662,13 @@ require("lspconfig").rust_analyzer.setup({
 -- Turn on lsp status information
 require("fidget").setup()
 
--- nvim-cmp setup
-local cmp = require("cmp")
-
 cmp.setup({
 	mapping = {
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),
 		-- Add tab support
 		["<C-j>"] = cmp.mapping.scroll_docs(4),
-		["<C-k>"] = cmp.mapping.scroll_docs(-4),
+		["<C-k>"] = cmp.mapping.scroll_docs( -4),
 		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
 		["<Tab>"] = cmp.mapping.confirm({
@@ -681,11 +685,11 @@ cmp.setup({
 	sources = {
 		{ name = "path" }, -- file paths
 		{ name = "luasnip" },
-		{ name = "nvim_lsp", keyword_length = 3 }, -- from language server
+		{ name = "nvim_lsp",               keyword_length = 3 }, -- from language server
 		{ name = "nvim_lsp_signature_help" }, -- display function signatures with current parameter emphasized
-		{ name = "nvim_lua", keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
-		{ name = "buffer", keyword_length = 2 }, -- source current buffer
-		{ name = "vsnip", keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
+		{ name = "nvim_lua",               keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
+		{ name = "buffer",                 keyword_length = 2 }, -- source current buffer
+		{ name = "vsnip",                  keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
 		{ name = "calc" }, -- source for math calculation
 	},
 	window = {
