@@ -7,7 +7,7 @@
 - link:
      ~/.zshrc: zshrc 
      ~/.gitconfig: gitconfig
-     ~/.config/karabiner/karabiner.json: config/karabiner.json
+     ~/.config/karabiner/: config/karabiner
      ~/.config/nvim/init.lua: config/nvim/init.lua 
      ~/.config/rstudio/themes/joestheme.rstheme: config/rstudio/themes/joestheme.rstheme
      ~/.config/rstudio/rstudio-prefs.json: config/rstudio/rstudio-prefs.json
