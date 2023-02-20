@@ -9,7 +9,7 @@ end
 
 require("packer").startup(function(use)
 	-- Package manager
-    use("romgrk/barbar.nvim")
+	use("romgrk/barbar.nvim")
 	use("norcalli/nvim-colorizer.lua")
 	use("wbthomason/packer.nvim")
 	use("simrat39/rust-tools.nvim")
@@ -260,6 +260,8 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- Set highlight on search
 vim.o.hlsearch = true
 vim.o.incsearch = true
+vim.cmd([[hi BufferCurrent guibg='#232323']])
+vim.cmd([[hi BufferTabpageFill guibg=black]])
 
 vim.o.termguicolors = true
 
