@@ -479,7 +479,7 @@ pcall(require("telescope").load_extension, "fzf")
 -- See `:help telescope.builtin`
 vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 -- vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set("n", "<leader>/", function()
+vim.keymap.set("n", "<leader>ff", function()
 	-- You can pass additional configuration to telescope to change theme, layout, etc.
 	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 		winblend = 5,
@@ -493,8 +493,8 @@ vim.keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { de
 vim.keymap.set("n", "<leader>sg", require("telescope.builtin").git_status, { desc = "[S]earch by [G]it status" })
 vim.keymap.set("n", "<leader><space>", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
-vim.keymap.set("n", "d[", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "d]", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next)
 vim.api.nvim_set_keymap("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", { noremap = true, silent = true })
 
 require("nvim-treesitter.configs").setup({
