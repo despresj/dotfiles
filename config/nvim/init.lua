@@ -260,7 +260,9 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- Set highlight on search
 vim.o.hlsearch = true
 vim.o.incsearch = true
-vim.cmd([[hi BufferCurrent guibg='#232323']])
+vim.cmd([[hi BufferCurrent guibg='#161616']])
+vim.cmd([[hi BufferCurrentSign guibg='#161616']])
+vim.cmd([[hi BufferCurrentMod guibg='#161616']])
 vim.cmd([[hi BufferTabpageFill guibg=black]])
 
 vim.o.termguicolors = true
