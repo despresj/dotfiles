@@ -18,6 +18,7 @@ require("packer").startup(function(use)
 	use("nvim-tree/nvim-tree.lua")
 	-- Completion framework:
 	use("hrsh7th/nvim-cmp")
+	use("kylechui/nvim-surround")
 	-- LSP completion source:
 	use("hrsh7th/cmp-nvim-lsp")
 	use("feline-nvim/feline.nvim")
@@ -82,7 +83,6 @@ require("packer").startup(function(use)
 	-- Auto commands
 	---------------------------------
 	vim.cmd([[ autocmd BufWritePre <buffer> lua vim.lsp.buf.format() ]])
-
 	rt.setup({
 		server = {
 			on_attach = function(_, bufnr)
@@ -378,6 +378,9 @@ local status_ok, npairs = pcall(require, "nvim-autopairs")
 if not status_ok then
 	return
 end
+
+require("nvim-surround").setup(
+)
 
 npairs.setup({
 	check_ts = true,
