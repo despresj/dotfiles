@@ -238,7 +238,7 @@ require("toggleterm").setup({
 require("auto-save").setup({
 	execution_message = {
 		message = function()
-			return ("Autosaved at" .. vim.fn.strftime("%H:%M:%S"))
+			return ("Autosaved at " .. vim.fn.strftime("%H:%M:%S"))
 		end,
 		cleaning_interval = 5000,
 	},
