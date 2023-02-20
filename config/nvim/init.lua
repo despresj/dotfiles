@@ -317,15 +317,27 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- map cs to to clearing search highlights
 vim.keymap.set("n", "<leader>cs", ":let @/ = ''<CR>", silent)
 vim.keymap.set(
-	{ "n", "v" },
+	{ "v" },
 	"<leader>hy",
-	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>',
+	'<cmd>lua requiregitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>',
 	{ silent = true }
 )
 vim.keymap.set(
-	{ "n", "v" },
+	{ "n" },
+	"<leader>hy",
+	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".copy_to_clipboard})<CR>',
+	{ silent = true }
+)
+vim.keymap.set(
+	{ "n" },
 	"<leader>ht",
-	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
+	{ silent = true }
+)
+vim.keymap.set(
+	{ "v" },
+	"<leader>ht",
+	'<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
 	{ silent = true }
 )
 -- yank to system clipboard
