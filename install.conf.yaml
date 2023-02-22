@@ -5,8 +5,8 @@
 - clean: ['~']
 
 - link:
-     ~/.zshrc: zshrc 
-     ~/.gitconfig: gitconfig
+     ~/.zshrc: .zshrc 
+     ~/.gitconfig: .gitconfig
      ~/.config/karabiner/: config/karabiner
      ~/.config/nvim/init.lua: config/nvim/init.lua 
      ~/.config/rstudio/themes/joestheme.rstheme: config/rstudio/themes/joestheme.rstheme
