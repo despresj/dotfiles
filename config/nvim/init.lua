@@ -326,7 +326,7 @@ vim.keymap.set("n", "<leader>cs", ":let @/ = ''<CR>", silent)
 vim.keymap.set(
 	{ "v" },
 	"<leader>hy",
-	'<cmd>lua requiregitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>',
+	'<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>',
 	{ silent = true }
 )
 vim.keymap.set(
