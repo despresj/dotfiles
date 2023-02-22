@@ -322,7 +322,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 -- map cs to to clearing search highlights
-vim.keymap.set("n", "<leader>cs", ":let @/ = ''<CR>", silent)
+vim.keymap.set("n", "<Esc>", ":noh<CR><esc>", silent)
 vim.keymap.set(
 	{ "v" },
 	"<leader>hy",
@@ -368,8 +368,8 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", { silent = true })
 
 -- Move to previous/next
-vim.api.nvim_set_keymap("n", "<leader>bl", "<Cmd>BufferNext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>bh", "<Cmd>BufferPrevious<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-l>", "<Cmd>BufferNext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-h>", "<Cmd>BufferPrevious<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>bc", "<Cmd>BufferClose<CR>", { noremap = true, silent = true })
 
 -- [[ Highlight on yank ]]
