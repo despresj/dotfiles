@@ -368,12 +368,8 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", { silent = true })
 
 -- Move to previous/next
-vim.api.nvim_set_keymap("n", "<C-l>", "<Cmd>BufferNext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-h>", "<Cmd>BufferPrevious<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("i", "<C-l>", "<Esc><Cmd>BufferNext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("i", "<C-h>", "<Esc><Cmd>BufferPrevious<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<C-l>", "<Esc><Cmd>BufferNext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<C-h>", "<Esc><Cmd>BufferPrevious<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "n", "i", "v" }, "<C-l>", "<Esc><Cmd>BufferNext<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "n", "i", "v" }, "<C-h>", "<Esc><Cmd>BufferPrevious<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>bc", "<Cmd>BufferClose<CR>", { noremap = true, silent = true })
 
 -- [[ Highlight on yank ]]
