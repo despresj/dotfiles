@@ -384,8 +384,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 --toggle term
-vim.keymap.set({ "n", "v" }, "<C-]>", ":wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo run' <CR>", silent)
-vim.keymap.set({ "n", "v" }, "<C-'>", ":wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo test' <CR>", silent)
+vim.keymap.set(
+	{ "n", "v", "i" },
+	"<C-]>",
+	"<Esc>:wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo run' <CR>",
+	silent
+)
+vim.keymap.set(
+	{ "n", "v", "i" },
+	"<C-'>",
+	"<Esc>:wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo test' <CR>",
+	silent
+)
 local status_ok, npairs = pcall(require, "nvim-autopairs")
 if not status_ok then
 	return

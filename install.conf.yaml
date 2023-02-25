@@ -3,6 +3,11 @@
       relink: true
 
 - clean: ['~']
+  
+- create:
+    - ~/.config/nvim/
+    - ~/.config/karabiner/
+    - ~/.config/rstudio/
 
 - link:
      ~/.zshrc: .zshrc 
@@ -12,8 +17,6 @@
      ~/.config/rstudio/themes/joestheme.rstheme: config/rstudio/themes/joestheme.rstheme
      ~/.config/rstudio/rstudio-prefs.json: config/rstudio/rstudio-prefs.json
      
-- create:
-    - ~/.config/nvim/
 
 - shell:
   - echo "hey guys"
