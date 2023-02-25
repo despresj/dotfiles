@@ -1,1 +1,43 @@
-/Users/josephdespres/Library/Application Support/org.dystroy.bacon/prefs.toml
+# This is a preferences file for the bacon tool
+# More info at https://github.com/Canop/bacon
+
+# Uncomment and change the value (true/false) to
+# specify whether bacon should start in summary mode
+#
+# summary = true
+
+# Uncomment and change the value (true/false) to
+# specify whether bacon should start with lines wrapped
+#
+# wrap = false
+
+# In "reverse" mode, the focus is at the bottom, item
+# order is reversed, and the status bar is on top
+#
+# reverse = true
+# Uncomment this to have bacon always export locations
+# This is equivalent to always adding -e to bacon commands
+# but can still be cancelled on specific launches with -E
+# 
+# See https://dystroy.org/bacon/config/#export-locations
+# 
+# export_locations = true
+# Uncomment and change the key-bindings you want to define
+# (some of those ones are the defaults)
+[jobs.clippy]
+command = ["cargo", "clippy", "--all-targets", "--color", "always"]
+need_stdout = true
+watch = ["tests", "benches", "examples"]
+[jobs.exs]
+command = ["cargo", "run", "--example", "simple", "--color", "always"]
+allow_warnings = true
+need_stdout = true
+[keybindings]
+esc = "back"
+ctrl-c = "quit"
+q = "quit"
+s = "toggle-summary"
+w = "toggle-wrap"
+t = "toggle-backtrace"
+k = "scroll-lines(-1)"
+j = "scroll-lines(1)"
