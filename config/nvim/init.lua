@@ -387,13 +387,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.keymap.set(
 	{ "n", "v", "i" },
 	"<C-]>",
-	"<Esc>:wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo run' <CR>",
+	"<Esc>:wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && bacon run' <CR>",
 	silent
 )
 vim.keymap.set(
 	{ "n", "v", "i" },
 	"<C-'>",
-	"<Esc>:wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo test' <CR>",
+	"<Esc>:wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && bacon test' <CR>",
 	silent
 )
 local status_ok, npairs = pcall(require, "nvim-autopairs")
