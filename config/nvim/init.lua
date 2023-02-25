@@ -223,6 +223,9 @@ require("toggleterm").setup({
 	shading_factor = 1,
 	start_in_insert = true,
 	insert_mappings = true,
+	on_open = function()
+		vim.cmd("silent! write")
+	end,
 	persist_size = true,
 	direction = "float",
 	close_on_exit = true,

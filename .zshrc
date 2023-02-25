@@ -34,8 +34,10 @@ new () {
 # alias
 alias lg='lazygit'
 alias dotfiles='.dotfiles/'
-alias exa='exa -lahm --icons --sort=mod --time-style=iso --git --no-user --no-permissions  --colour-scale  --tree --level=2'
 alias ls='exa -lhm --icons --sort=mod --time-style=iso --git --no-user --no-permissions  --colour-scale  --tree --level=1'
+alias lss='exa -lhm --icons --sort=mod --time-style=iso --git --no-user --no-permissions  --colour-scale  --tree --level=2'
+alias exa='exa -lhm --icons --sort=mod --time-style=iso --git --no-user --no-permissions  --colour-scale  --tree --level=2'
+alias lsss='exa -lhm --icons --sort=mod --time-style=iso --git --no-user --no-permissions  --colour-scale  --tree --level=3'
 alias vim='nvim -n'
 alias vi='nvim -n'
 alias cat='bat'
