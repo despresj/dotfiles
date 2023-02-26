@@ -32,16 +32,12 @@ new () {
     sudo touch $1 && open $1
 }
 # alias
-alias lg='lazygit'
-alias dotfiles='.dotfiles/'
-alias ls='exa -lhm --icons --sort=mod --time-style=iso --git --no-user --no-permissions  --colour-scale  --tree --level=1'
-alias lss='exa -lhm --icons --sort=mod --time-style=iso --git --no-user --no-permissions  --colour-scale  --tree --level=2'
-alias exa='exa -lhm --icons --sort=mod --time-style=iso --git --no-user --no-permissions  --colour-scale  --tree --level=2'
-alias lsss='exa -lhm --icons --sort=mod --time-style=iso --git --no-user --no-permissions  --colour-scale  --tree --level=3'
+alias ls='exa -lhmr --icons --sort=mod --time-style=long-iso --git --no-user --no-permissions  --colour-scale  --tree --level=1'
+alias lss='exa -lhmr --icons --sort=mod --time-style=long-iso --git --no-user --no-permissions  --colour-scale  --tree --level=2'
+alias lsss='exa -lhmr --icons --sort=mod --time-style=long-iso --git --no-user --no-permissions  --colour-scale  --tree --level=3'
 alias vim='nvim -n'
 alias vi='nvim -n'
 alias cat='bat'
-
 
 alias dotfiles='cd ~/.dotfiles'
 alias .dotfiles='cd ~/.dotfiles'
