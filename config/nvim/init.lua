@@ -195,6 +195,7 @@ require("nightfox").setup({
 })
 
 vim.cmd("set termguicolors")
+vim.cmd("set rnu")
 vim.cmd("set tabstop=4")
 require("colorizer").setup()
 require("feline").setup()
