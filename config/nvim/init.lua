@@ -193,6 +193,7 @@ require("nightfox").setup({
 		},
 	},
 })
+
 vim.cmd("set termguicolors")
 vim.cmd("set tabstop=4")
 require("colorizer").setup()
@@ -390,15 +391,24 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.keymap.set(
 	{ "n", "v", "i" },
 	"<C-]>",
-	"<Esc>:wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && bacon run' <CR>",
+	"<Esc>:wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo run' <CR>",
 	silent
 )
+
 vim.keymap.set(
 	{ "n", "v", "i" },
 	"<C-'>",
-	"<Esc>:wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && bacon test' <CR>",
+	"<Esc>:wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo test' <CR>",
 	silent
 )
+
+vim.keymap.set(
+	{ "n", "v", "i" },
+	"<C-[>",
+	"<Esc>:wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo clippy --fix -- -W clippy::pedantic -W clippy::nursery -W clippy::unwrap_used -W clippy::expect_used' <CR>",
+	silent
+)
+
 local status_ok, npairs = pcall(require, "nvim-autopairs")
 if not status_ok then
 	return
