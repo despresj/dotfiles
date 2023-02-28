@@ -32,7 +32,7 @@ new () {
     sudo touch $1 && open $1
 }
 # alias
-alias ls='exa -lhmr --icons --sort=mod --time-style=long-iso --git --no-user --no-permissions  --colour-scale  --tree --level=1'
+alias ls='exa -lahmr --icons --sort=mod --time-style=long-iso --git --no-user --no-permissions  --colour-scale  --tree --level=1'
 alias lss='exa -lhmr --icons --sort=mod --time-style=long-iso --git --no-user --no-permissions  --colour-scale  --tree --level=2'
 alias lsss='exa -lhmr --icons --sort=mod --time-style=long-iso --git --no-user --no-permissions  --colour-scale  --tree --level=3'
 alias vim='nvim -n'
