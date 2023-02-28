@@ -481,7 +481,7 @@ require("gitsigns").setup({
 		map({ "n", "v" }, "<leader>ha", ":Gitsigns stage_buffer<CR>")
 		map({ "n", "v" }, "<leader>hn", ":Gitsigns next_hunk<CR>")
 		map({ "n", "v" }, "<leader>hb", ":Gitsigns toggle_current_line_blame<CR>")
-		map({ "n", "v" }, "<leader>hp", ":STOP USE <leader>hv")
+		map({ "n", "v" }, "<leader>hp", ":Git pull<CR>")
 		map({ "n", "v" }, "<leader>hv", ":Gitsigns preview_hunk<CR>")
 		map({ "n", "v" }, "<leader>hm", ":Git commit --amend --no-edit")
 		map({ "n", "v" }, "<leader>hg", ":Git push")
