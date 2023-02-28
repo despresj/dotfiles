@@ -153,7 +153,6 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 	-- autosave
 	use("pocco81/auto-save.nvim")
 
-	use("frazrepo/vim-rainbow") -- Rainbow colored brackets
 	use("lukas-reineke/indent-blankline.nvim") -- Add indentation guides even on blank lines
 	use("numToStr/Comment.nvim")
 	use("saadparwaiz1/cmp_luasnip")
@@ -175,6 +174,7 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 	end
 end)
 -- Default options
+
 require("nightfox").setup({
 	palettes = {
 		carbonfox = {
@@ -641,12 +641,6 @@ local servers = {
 	pyright = {},
 	r_language_server = {},
 	rust_analyzer = {},
-	sumneko_lua = {
-		Lua = {
-			workspace = { checkThirdParty = false },
-			telemetry = { enable = false },
-		},
-	},
 }
 
 -- Setup neovim lua configuration
