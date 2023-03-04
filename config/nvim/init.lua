@@ -311,6 +311,18 @@ vim.g.maplocalleader = " "
 
 local silent = { silent = true }
 -- Keymapping
+vim.api.nvim_set_keymap("n", "<leader>tt", ":term<cr>", { noremap = true, silent = true })
+vim.api.nvim_exec(
+	[[
+augroup TerminalSettings
+  autocmd!
+  autocmd TermOpen * setlocal nonumber norelativenumber
+augroup end
+]],
+	false
+)
+vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><c-n>", silent)
+-- vim.api.nvim_set_keymap("n", "<leader>tt", ":w<CR> | :terminal <CR>", silent)
 vim.api.nvim_set_keymap("n", "<leader>vi", ":e $VIMCONFIG<CR>", silent)
 vim.api.nvim_set_keymap("n", "<leader>bo", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" })
 
@@ -357,7 +369,7 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- consider this for changing permission via leader x
 --vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>")
-vim.keymap.set({ "n", "v" }, "<leader>ww", [[:wa<CR>]])
+vim.keymap.set({ "n", "v" }, "<leader>ww", [[:wa<CR>]], silent)
 vim.keymap.set({ "n", "v" }, "<leader>qq", [[:xa<CR>]])
 -- window resizing
 vim.keymap.set("n", "<C-=>", ":resize +2<CR>")
