@@ -48,7 +48,6 @@ require("packer").startup(function(use)
 			"folke/neodev.nvim",
 		},
 	})
-
 	local rt = require("rust-tools")
 	---------------------------------
 	-- Formatting
@@ -125,11 +124,6 @@ require("packer").startup(function(use)
 		},
 	})
 
-	vim.cmd([[
-set signcolumn=yes
-autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
-]])
-
 	use({
 		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
@@ -193,7 +187,10 @@ require("nightfox").setup({
 		},
 	},
 })
-
+vim.cmd([[
+set signcolumn=yes
+autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+]])
 vim.cmd("set termguicolors")
 vim.cmd("set rnu")
 vim.cmd("set tabstop=4")
