@@ -340,7 +340,7 @@ vim.keymap.set("n", "<Esc>", ":noh<CR><esc>", silent)
 vim.keymap.set(
 	{ "v" },
 	"<leader>hy",
-	'<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>',
+	'<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".copy_to_clipboard})<CR>',
 	{ silent = true }
 )
 vim.keymap.set(
