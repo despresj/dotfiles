@@ -174,6 +174,7 @@ require("nightfox").setup({
 		carbonfox = {
 			red = "#ff0000",
 			sel0 = "#3d2e27", -- visual select
+			bg0 = "#151616",
 		},
 	},
 	specs = {
