@@ -175,6 +175,7 @@ require("nightfox").setup({
 			red = "#ff0000",
 			sel0 = "#3d2e27", -- visual select
 			bg0 = "#151616",
+			bg1 = "#000000",
 		},
 	},
 	specs = {
