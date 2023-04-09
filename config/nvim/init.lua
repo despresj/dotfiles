@@ -148,6 +148,8 @@ require("packer").startup(function(use)
 	use("pocco81/auto-save.nvim")
 
 	use("lukas-reineke/indent-blankline.nvim") -- Add indentation guides even on blank lines
+	use("JellyApple102/flote.nvim")
+
 	use("numToStr/Comment.nvim")
 	use("saadparwaiz1/cmp_luasnip")
 	use("rafamadriz/friendly-snippets")
@@ -214,6 +216,13 @@ if is_bootstrap then
 	print("==================================")
 	return
 end
+
+
+require('flote').setup {
+	q_to_quit = true,
+	window_style = 'minimal',
+	window_border = 'solid'
+}
 
 -- toggle term
 require("toggleterm").setup({
