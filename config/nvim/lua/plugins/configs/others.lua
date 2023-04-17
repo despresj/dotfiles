@@ -51,7 +51,7 @@ end
 
 M.gitsigns = {
   signs = {
-    add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
+    add = { hl = "DiffAdd", text = "+", numhl = "GitSignsAddNr" },
     change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
     delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
     topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
