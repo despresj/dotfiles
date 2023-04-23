@@ -16,8 +16,7 @@ M.dap = {
     },
 ["<C-]>"] = {
   function()
-    local cmd = "cargo run"
-    require("nvterm.terminal").toggle("horizontal", cmd)
+    require("nvterm.terminal").send("cargo run", "horizontal")
   end,
   "toggle term",
 },
