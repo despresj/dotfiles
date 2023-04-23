@@ -125,14 +125,6 @@ require("packer").startup(function(use)
 	})
 
 	use({
-		-- Highlight, edit, and navigate code
-		"nvim-treesitter/nvim-treesitter",
-		run = function()
-			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
-		end,
-	})
-
-	use({
 		-- Additional text objects via treesitter
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		after = "nvim-treesitter",
@@ -217,12 +209,11 @@ if is_bootstrap then
 	return
 end
 
-
-require('flote').setup {
+require("flote").setup({
 	q_to_quit = true,
-	window_style = 'minimal',
-	window_border = 'solid'
-}
+	window_style = "minimal",
+	window_border = "solid",
+})
 
 -- toggle term
 require("toggleterm").setup({
@@ -273,10 +264,10 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- Set highlight on search
 vim.o.hlsearch = true
 vim.o.incsearch = true
-vim.cmd([[hi BufferCurrent guibg='#000000']])
-vim.cmd([[hi BufferCurrentSign guibg='#000000']])
-vim.cmd([[hi BufferCurrentMod guibg='#000000']])
-vim.cmd([[hi BufferTabpageFill guibg=black]])
+vim.cmd([[hi BufferCurrent guibg='#0b0e08']])
+vim.cmd([[hi BufferCurrentSign guibg='#0b0e08']])
+vim.cmd([[hi BufferCurrentMod guibg='#0b0e08']])
+vim.cmd([[hi BufferTabpageFill guibg='#0b0e08']])
 
 vim.o.termguicolors = true
 
@@ -476,7 +467,7 @@ require("indent_blankline").setup({
 require("gitsigns").setup({
 	signs = {
 		add = { text = "+" },
-		change = { text = "~" },
+		change = { text = "│" },
 		delete = { text = "⤷" },
 		topdelete = { text = "‾" },
 		changedelete = { text = "~" },
@@ -552,7 +543,7 @@ vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next)
 vim.api.nvim_set_keymap("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", { noremap = true, silent = true })
 
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "lua", "python", "rust", "help", "vim" },
+	ensure_installed = { "lua", "python", "rust", "vim" },
 	highlight = { enable = true },
 	indent = { enable = true, disable = { "python" } },
 	incremental_selection = {
@@ -708,7 +699,7 @@ cmp.setup({
 		["<C-n>"] = cmp.mapping.select_next_item(),
 		-- Add tab support
 		["<C-j>"] = cmp.mapping.scroll_docs(4),
-		["<C-k>"] = cmp.mapping.scroll_docs( -4),
+		["<C-k>"] = cmp.mapping.scroll_docs(-4),
 		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
 		["<Tab>"] = cmp.mapping.confirm({
@@ -723,14 +714,14 @@ cmp.setup({
 	},
 	-- Installed sources:
 	sources = {
-		{ name = "path" }, -- file paths
+		{ name = "path" },                         -- file paths
 		{ name = "luasnip" },
 		{ name = "nvim_lsp",               keyword_length = 3 }, -- from language server
-		{ name = "nvim_lsp_signature_help" }, -- display function signatures with current parameter emphasized
+		{ name = "nvim_lsp_signature_help" },      -- display function signatures with current parameter emphasized
 		{ name = "nvim_lua",               keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
 		{ name = "buffer",                 keyword_length = 2 }, -- source current buffer
 		{ name = "vsnip",                  keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
-		{ name = "calc" }, -- source for math calculation
+		{ name = "calc" },                         -- source for math calculation
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
