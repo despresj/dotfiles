@@ -11,11 +11,20 @@ if wezterm.config_builder then
 end
 
 config.hide_tab_bar_if_only_one_tab = true
+config.window_close_confirmation = "NeverPrompt"
 -- This is where you actually apply your config choices
 
 config.font_size = 18.0
 -- For example, changing the color scheme:
-config.color_scheme = "Framer"
+-- config.color_scheme = 'Atelierseaside (dark) (terminal.sexy)'
+-- config.color_scheme = 'Blue Matrix'
+-- config.color_scheme = 'Bright Lights'
+-- config.color_scheme = 'Brogrammer'
+-- config.color_scheme = 'Builtin Pastel Dark'
+-- config.color_scheme = 'Ciapre'
+-- config.color_scheme = 'DimmedMonokai'
+config.color_scheme = 'Kibble'
+check_for_updates = false
 
 -- and finally, return the configuration to wezterm
 return config
