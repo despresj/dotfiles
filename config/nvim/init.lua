@@ -169,7 +169,7 @@ require("nightfox").setup({
 			red = "#ff0000",
 			sel0 = "#3d2e27", -- visual select
 			bg0 = "#151616",
-			bg1 = "#000000",
+			bg1 = "black",
 		},
 	},
 	specs = {
@@ -264,10 +264,10 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- Set highlight on search
 vim.o.hlsearch = true
 vim.o.incsearch = true
-vim.cmd([[hi BufferCurrent guibg='#0b0e08']])
-vim.cmd([[hi BufferCurrentSign guibg='#0b0e08']])
-vim.cmd([[hi BufferCurrentMod guibg='#0b0e08']])
-vim.cmd([[hi BufferTabpageFill guibg='#0b0e08']])
+vim.cmd([[hi BufferCurrent guibg='black']])
+vim.cmd([[hi BufferCurrentSign guibg='black']])
+vim.cmd([[hi BufferCurrentMod guibg='black']])
+vim.cmd([[hi BufferTabpageFill guibg='black']])
 
 vim.o.termguicolors = true
 
