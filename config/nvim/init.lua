@@ -90,7 +90,8 @@ require("packer").startup(function(use)
 				-- Hover actions
 				vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
 				-- Code action groups
-				vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+				vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group,
+				{ buffer = bufnr })
 			end,
 		},
 	})
@@ -713,14 +714,14 @@ cmp.setup({
 	},
 	-- Installed sources:
 	sources = {
-		{ name = "path" }, -- file paths
+		{ name = "path" },           -- file paths
 		{ name = "luasnip" },
-		{ name = "nvim_lsp", keyword_length = 3 }, -- from language server
+		{ name = "nvim_lsp",               keyword_length = 3 }, -- from language server
 		{ name = "nvim_lsp_signature_help" }, -- display function signatures with current parameter emphasized
-		{ name = "nvim_lua", keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
-		{ name = "buffer", keyword_length = 2 }, -- source current buffer
-		{ name = "vsnip", keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
-		{ name = "calc" }, -- source for math calculation
+		{ name = "nvim_lua",               keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
+		{ name = "buffer",                 keyword_length = 2 }, -- source current buffer
+		{ name = "vsnip",                  keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
+		{ name = "calc" },           -- source for math calculation
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
