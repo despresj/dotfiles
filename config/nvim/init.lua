@@ -9,9 +9,6 @@ end
 
 require("packer").startup(function(use)
 	-- Package manager
-	use("romgrk/barbar.nvim")
-	use("echasnovski/mini.indentscope")
-	use("norcalli/nvim-colorizer.lua")
 	use("wbthomason/packer.nvim")
 	use("simrat39/rust-tools.nvim")
 	-- other plugins...
@@ -21,7 +18,6 @@ require("packer").startup(function(use)
 	use("nvim-tree/nvim-tree.lua")
 	-- Completion framework:
 	use("hrsh7th/nvim-cmp")
-	use("kylechui/nvim-surround")
 	-- LSP completion source:
 	use("hrsh7th/cmp-nvim-lsp")
 	use("feline-nvim/feline.nvim")
@@ -49,6 +45,7 @@ require("packer").startup(function(use)
 			"folke/neodev.nvim",
 		},
 	})
+
 	local rt = require("rust-tools")
 	---------------------------------
 	-- Formatting
@@ -85,13 +82,15 @@ require("packer").startup(function(use)
 	-- Auto commands
 	---------------------------------
 	vim.cmd([[ autocmd BufWritePre <buffer> lua vim.lsp.buf.format() ]])
+
 	rt.setup({
 		server = {
 			on_attach = function(_, bufnr)
 				-- Hover actions
 				vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
 				-- Code action groups
-				vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+				vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group,
+				{ buffer = bufnr })
 			end,
 		},
 	})
@@ -124,6 +123,19 @@ require("packer").startup(function(use)
 		},
 	})
 
+	vim.cmd([[
+set signcolumn=yes
+autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+]])
+
+	use({
+		-- Highlight, edit, and navigate code
+		"nvim-treesitter/nvim-treesitter",
+		run = function()
+			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+		end,
+	})
+
 	use({
 		-- Additional text objects via treesitter
 		"nvim-treesitter/nvim-treesitter-textobjects",
@@ -139,10 +151,10 @@ require("packer").startup(function(use)
 	-- autosave
 	use("pocco81/auto-save.nvim")
 
+	use("frazrepo/vim-rainbow")         -- Rainbow colored brackets
 	use("lukas-reineke/indent-blankline.nvim") -- Add indentation guides even on blank lines
-	use("JellyApple102/flote.nvim")
-
 	use("numToStr/Comment.nvim")
+	use("tpope/vim-sleuth")             -- Detect tabstop and shiftwidth automatically
 	use("saadparwaiz1/cmp_luasnip")
 	use("rafamadriz/friendly-snippets")
 	-- Fuzzy Finder (files, lsp, etc)
@@ -162,14 +174,11 @@ require("packer").startup(function(use)
 	end
 end)
 -- Default options
-
 require("nightfox").setup({
 	palettes = {
-		red = "#ff0000",
 		carbonfox = {
+			red = "#ff0000",
 			sel0 = "#3d2e27", -- visual select
-			bg0 = "NONE",
-			bg1 = "black",
 		},
 	},
 	specs = {
@@ -183,15 +192,7 @@ require("nightfox").setup({
 		},
 	},
 })
-vim.cmd([[
-set signcolumn=yes
-autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
-]])
-vim.wo.fillchars = "eob: "
 vim.cmd("set termguicolors")
-vim.cmd("set rnu")
-vim.cmd("set tabstop=4")
-require("colorizer").setup()
 require("feline").setup()
 
 -- setup must be called before loading
@@ -210,12 +211,6 @@ if is_bootstrap then
 	return
 end
 
-require("flote").setup({
-	q_to_quit = true,
-	window_style = "minimal",
-	window_border = "solid",
-})
-
 -- toggle term
 require("toggleterm").setup({
 	open_mapping = [[<c-\>]],
@@ -225,9 +220,6 @@ require("toggleterm").setup({
 	shading_factor = 1,
 	start_in_insert = true,
 	insert_mappings = true,
-	on_open = function()
-		vim.cmd("silent! write")
-	end,
 	persist_size = true,
 	direction = "float",
 	close_on_exit = true,
@@ -246,7 +238,7 @@ require("toggleterm").setup({
 require("auto-save").setup({
 	execution_message = {
 		message = function()
-			return ("Autosaved at " .. vim.fn.strftime("%H:%M:%S"))
+			return ("Autosaved at" .. vim.fn.strftime("%H:%M:%S"))
 		end,
 		cleaning_interval = 5000,
 	},
@@ -265,11 +257,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- Set highlight on search
 vim.o.hlsearch = true
 vim.o.incsearch = true
-
-vim.cmd([[hi BufferCurrent guibg=NONE]])
-vim.cmd([[hi BufferCurrentSign guibg=NONE]])
-vim.cmd([[hi BufferCurrentMod guibg=NONE]])
-vim.cmd([[hi BufferTabpageFill guibg=NONE]])
 
 vim.o.termguicolors = true
 
@@ -312,18 +299,6 @@ vim.g.maplocalleader = " "
 
 local silent = { silent = true }
 -- Keymapping
-vim.api.nvim_set_keymap("n", "<leader>tt", ":term<cr>", { noremap = true, silent = true })
-vim.api.nvim_exec(
-	[[
-augroup TerminalSettings
-  autocmd!
-  autocmd TermOpen * setlocal nonumber norelativenumber
-augroup end
-]],
-	false
-)
-vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><c-n>", silent)
--- vim.api.nvim_set_keymap("n", "<leader>tt", ":w<CR> | :terminal <CR>", silent)
 vim.api.nvim_set_keymap("n", "<leader>vi", ":e $VIMCONFIG<CR>", silent)
 vim.api.nvim_set_keymap("n", "<leader>bo", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" })
 
@@ -340,11 +315,11 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 -- map cs to to clearing search highlights
-vim.keymap.set("n", "<Esc>", ":noh<CR><esc>", silent)
+vim.keymap.set("n", "<leader>cs", ":let @/ = ''<CR>", silent)
 vim.keymap.set(
 	{ "v" },
 	"<leader>hy",
-	'<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".copy_to_clipboard})<CR>',
+	'<cmd>lua requiregitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".copy_to_clipboard})<cr>',
 	{ silent = true }
 )
 vim.keymap.set(
@@ -370,7 +345,7 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- consider this for changing permission via leader x
 --vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>")
-vim.keymap.set({ "n", "v" }, "<leader>ww", [[:wa<CR>]], silent)
+vim.keymap.set({ "n", "v" }, "<leader>ww", [[:wa<CR>]])
 vim.keymap.set({ "n", "v" }, "<leader>qq", [[:xa<CR>]])
 -- window resizing
 vim.keymap.set("n", "<C-=>", ":resize +2<CR>")
@@ -385,11 +360,6 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Better terminal navigation
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", { silent = true })
 
--- Move to previous/next
-vim.keymap.set({ "n", "i", "v" }, "<C-l>", "<Esc><Cmd>BufferNext<CR>", { noremap = true, silent = true })
-vim.keymap.set({ "n", "i", "v" }, "<C-h>", "<Esc><Cmd>BufferPrevious<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>bc", "<Cmd>BufferClose<CR>", { noremap = true, silent = true })
-
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
@@ -402,33 +372,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 --toggle term
-vim.keymap.set(
-	{ "n", "v", "i" },
-	"<C-]>",
-	"<Esc>:wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo run' <CR>",
-	silent
-)
-
-vim.keymap.set(
-	{ "n", "v", "i" },
-	"<C-'>",
-	"<Esc>:wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo test' <CR>",
-	silent
-)
-
-vim.keymap.set(
-	{ "n" },
-	"<C-[>",
-	"<Esc>:wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo clippy --fix -- -W clippy::pedantic -W clippy::nursery -W clippy::unwrap_used -W clippy::expect_used' <CR>",
-	silent
-)
-
+vim.keymap.set({ "n", "v" }, "<C-]>", ":wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo run' <CR>", silent)
+vim.keymap.set({ "n", "v" }, "<C-'>", ":wa<CR> | :TermExec cmd='[ -f \"Cargo.lock\" ] && cargo test' <CR>", silent)
 local status_ok, npairs = pcall(require, "nvim-autopairs")
 if not status_ok then
 	return
 end
-
-require("nvim-surround").setup()
 
 npairs.setup({
 	check_ts = true,
@@ -469,11 +418,11 @@ require("indent_blankline").setup({
 require("gitsigns").setup({
 	signs = {
 		add = { text = "+" },
-		change = { text = "│" },
+		change = { text = "~" },
 		delete = { text = "⤷" },
 		topdelete = { text = "‾" },
 		changedelete = { text = "~" },
-		untracked = { text = "┋" },
+		untracked = { text = "ⓤ" },
 	},
 	signcolumn = true,
 	numhl = true,
@@ -494,8 +443,8 @@ require("gitsigns").setup({
 		map({ "n", "v" }, "<leader>ha", ":Gitsigns stage_buffer<CR>")
 		map({ "n", "v" }, "<leader>hn", ":Gitsigns next_hunk<CR>")
 		map({ "n", "v" }, "<leader>hb", ":Gitsigns toggle_current_line_blame<CR>")
+		map({ "n", "v" }, "<leader>hp", ":STOP USE <leader>hv")
 		map({ "n", "v" }, "<leader>hv", ":Gitsigns preview_hunk<CR>")
-		map({ "n", "v" }, "<leader>hp", ":Git pull")
 		map({ "n", "v" }, "<leader>hm", ":Git commit --amend --no-edit")
 		map({ "n", "v" }, "<leader>hg", ":Git push")
 
@@ -514,6 +463,8 @@ require("telescope").setup({
 	defaults = {
 		mappings = {
 			i = {
+				["<C-u>"] = false,
+				["<C-d>"] = false,
 				["<esc>"] = actions.close,
 			},
 		},
@@ -526,7 +477,7 @@ pcall(require("telescope").load_extension, "fzf")
 -- See `:help telescope.builtin`
 vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 -- vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set("n", "<leader>ff", function()
+vim.keymap.set("n", "<leader>/", function()
 	-- You can pass additional configuration to telescope to change theme, layout, etc.
 	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 		winblend = 5,
@@ -540,8 +491,8 @@ vim.keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { de
 vim.keymap.set("n", "<leader>sg", require("telescope.builtin").git_status, { desc = "[S]earch by [G]it status" })
 vim.keymap.set("n", "<leader><space>", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
-vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next)
+vim.keymap.set("n", "d[", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "d]", vim.diagnostic.goto_next)
 vim.api.nvim_set_keymap("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", { noremap = true, silent = true })
 
 require("nvim-treesitter.configs").setup({
@@ -652,6 +603,12 @@ local servers = {
 	pyright = {},
 	r_language_server = {},
 	rust_analyzer = {},
+	sumneko_lua = {
+		Lua = {
+			workspace = { checkThirdParty = false },
+			telemetry = { enable = false },
+		},
+	},
 }
 
 -- Setup neovim lua configuration
@@ -695,6 +652,9 @@ require("lspconfig").rust_analyzer.setup({
 -- Turn on lsp status information
 require("fidget").setup()
 
+-- nvim-cmp setup
+local cmp = require("cmp")
+
 cmp.setup({
 	mapping = {
 		["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -716,14 +676,14 @@ cmp.setup({
 	},
 	-- Installed sources:
 	sources = {
-		{ name = "path" }, -- file paths
+		{ name = "path" },           -- file paths
 		{ name = "luasnip" },
-		{ name = "nvim_lsp", keyword_length = 3 }, -- from language server
+		{ name = "nvim_lsp",               keyword_length = 3 }, -- from language server
 		{ name = "nvim_lsp_signature_help" }, -- display function signatures with current parameter emphasized
-		{ name = "nvim_lua", keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
-		{ name = "buffer", keyword_length = 2 }, -- source current buffer
-		{ name = "vsnip", keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
-		{ name = "calc" }, -- source for math calculation
+		{ name = "nvim_lua",               keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
+		{ name = "buffer",                 keyword_length = 2 }, -- source current buffer
+		{ name = "vsnip",                  keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
+		{ name = "calc" },           -- source for math calculation
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
